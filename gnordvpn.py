@@ -9,8 +9,8 @@ from gi.repository import Gtk, GLib, Gdk
 from threading import Thread
 from time import sleep
 
-# VERSION = 1.2.9
-ver = "1.2.9"
+# VERSION = 1.2.8
+ver = "1.2.8"
 
 
 # TODO
