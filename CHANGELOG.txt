@@ -32,7 +32,6 @@ CHANGELOG
 # gnordvpn-sprokkel78 1.2.7
 - update to the userinterface, menu is now iconized.
 
-
 # gnordvpn-sprokkel78 1.2.6
 - added the allowlist function to the user interface.
 - added a dialogue popup incase the connection to nordvpn fails due to incorrect settings.
