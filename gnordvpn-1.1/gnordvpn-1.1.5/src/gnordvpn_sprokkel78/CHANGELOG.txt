@@ -1,0 +1,19 @@
+# CHANGELOG
+
+
+# gnordvpn-sprokkel78 1.1.5
+- changed font of the textview widget to monospace 9 for increased readability.
+- application icon only gets loaded if it can be found.
+
+# gnordvpn-sprokkel78 1.1.4
+- added application icon to the python3 project files.
+- fixed code for not finding the application window icon at startup. (gnordvpn.svg) 
+
+# gnordvpn-sprokkel78 1.1.3
+- this version was used for testing the pypi.org upload framework.
+
+# gnordvpn-sprokkel78 1.1.2
+- initial release on pypi.org, this version lacks several project files.
+
+# gnordvpn-sprokkel78 1.1.1
+- proof of concept.

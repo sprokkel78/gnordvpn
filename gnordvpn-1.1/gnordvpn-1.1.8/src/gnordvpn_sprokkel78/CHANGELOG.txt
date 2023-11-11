@@ -1,0 +1,58 @@
+GNORDVPN-SPROKKEL78
+-------------------
+
+NOTES:
+-----
+
+If you make changes to the setting TECHNOLOGY or PROTOCOL then you must reconnect
+for them to apply. The PROTOCOL setting can only be changed when using the OPENVPN
+Technology.
+
+The Meshnet Module will only become available if you have a working internet connection. 
+Without a working internet connection the app might take a while to respond and the desktop
+can popup a force-quit window. If the internet connection drops the meshnet module will
+become unavailable in the app.
+
+Pressing CTRL-q will quit the application.
+Pressing CTRL-m will iconify the application.
+
+CHANGELOG
+---------
+
+# gnordvpn-sprokkel78 1.1.8
+- added the threat protection lite setting to the user interface.
+- added the meshnet module settings to the user interface.
+
+# gnordvpn-sprokkel78 1.1.7
+- pressing CTRL-q will now quit the application.
+- pressing CTRL-m will now minimize the application.
+- added the auto-connect setting to the user interface.
+- added the notification setting to the user interface.
+- added the analytics setting to the user interface.
+- added the ipv6 setting to the user interface.
+- added the lan-discovery setting to the user interface.
+- changed the behaviour of the dropdown menu's for the settings.
+- tested and build for nordvpn version 3.16.6
+
+# gnordvpn-sprokkel78 1.1.6
+- added the routing setting to the user interface.
+- changed the style setup for widgets to css instead of Pango.
+- other minor changes to the code and the user interface.
+- tested and build for nordvpn version 3.16.5
+
+# gnordvpn-sprokkel78 1.1.5
+- changed font of the textview widget to monospace 9 for increased readability.
+- application icon only gets loaded if it can be found.
+
+# gnordvpn-sprokkel78 1.1.4
+- added application icon to the python3 project files.
+- fixed code for not finding the application window icon at startup. (gnordvpn.svg) 
+
+# gnordvpn-sprokkel78 1.1.3
+- this version was used for testing the pypi.org upload framework.
+
+# gnordvpn-sprokkel78 1.1.2
+- initial release on pypi.org, this version lacks several project files.
+
+# gnordvpn-sprokkel78 1.1.1
+- proof of concept.

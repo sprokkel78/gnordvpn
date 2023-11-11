@@ -1,0 +1,17 @@
+/* css style */
+
+* * {
+    font: 12px monospace;
+}
+
+#label {
+    font: 12px monospace;
+}
+
+#textview {
+    font: 12px monospace;
+}
+
+#cbbox {
+	font: 12px monospace;
+}

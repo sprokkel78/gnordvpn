@@ -1,0 +1,3 @@
+#!/bin/sh
+cd /usr/share/gnordvpn-sprokkel78/
+python3 ./gnordvpn.py

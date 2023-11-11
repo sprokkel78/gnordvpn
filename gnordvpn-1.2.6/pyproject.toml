@@ -1,0 +1,18 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gnordvpn_sprokkel78"
+version = "1.2.6"
+authors = [
+  { name="Sprokkel78", email="sprokkel78.bart@gmail.com" },
+]
+description = "A graphical user interface in pygtk for using the nordvpn client binary on ubuntu and other linux distro's."
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+]
+requires-python = ">=3.10"

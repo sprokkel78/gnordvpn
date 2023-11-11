@@ -1,0 +1,145 @@
+GNORDVPN-SPROKKEL78
+-------------------
+
+NOTES:
+-----
+
+- If you make CHANGES to the setting TECHNOLOGY or PROTOCOL then you must RECONNECT
+  for them to apply. The PROTOCOL setting can only be CHANGED when using the OPENVPN
+  Technology.
+
+- The routing setting can only be changed if Meshnet is disabled.
+  
+- Sending and receiving files with meshnet uses GNOME-TERMINAL for progress.
+
+- Setting Custom DNS will DISABLE Threat Protection Lite and visa versa.
+
+- Making CHANGES to the OBFUSCATE setting requires a RECONNECTION to take effect.
+- Obfuscate can only be enabled with OPENVPN Technology.
+
+- Adding Private Network Addresses as a subnet to the allowlist is only possible 
+  if LAN DISCOVERY is turned OFF.
+
+Pressing CTRL-q will quit the application.
+Pressing CTRL-m will iconify the application.
+
+CHANGELOG
+---------
+
+# gnordvpn-sprokkel78 1.2.6
+- added the allowlist function to the user interface.
+- added a dialogue popup incase the connection to nordvpn fails due to incorrect settings.
+- made other minor changes to the user interface.
+
+# gnordvpn-sprokkel78 1.2.5
+- bugfix for the send file and select file entries in the meshnet module.
+- minor visual change to NVPN label.
+- when changing to nordlynx technology, obfuscate will automatically disable.
+- corrected behaviour for the response dialogue for the route traffic option.
+- made the meshnet module checkbox a bit more stable.
+- added all countries to the list.
+- bugfix for the route traffic option.
+
+# gnordvpn-sprokkel78 1.2.4
+- added the route traffic option to the meshnet module.
+- added color green/red to NVPN label. Green is connected, red is disconnected.
+- made the meshnet module checkbox a bit more stable.
+- code update to the Get Incoming Files thread. The thread will only run code if meshnet is on.
+- minor visual updates to the user interface.
+- minor code updates to dialogues and terminals.
+
+# gnordvpn-sprokkel78 1.2.3
+- made small changes to the css file.
+- fixed a visual bug that presented itself when using other themes.
+- added .desktop entry to the system wide installer.
+- added 2 user interface dialogues at app startup in case the nordvpn binary
+  is not found, or when you are not logged in to nordvpn.
+
+# gnordvpn-sprokkel78 1.2.2
+- added some country codes to the list.
+- the country code list is now wrapped.
+- did code cleanup when it comes to GtkBox-naming.
+- custom dns will now accept two ip-addresses.
+- made changes to meshnet module responsiveness.
+- added obfuscate setting to the interface.
+- fixed a bug in sending files with meshnet when the filename contained spaces.
+
+# gnordvpn-sprokkel78 1.2.1
+- added the Custom DNS setting to the interface.
+- added meshnet setting name to the textview.
+- added dns setting name to the textview.
+- fixed a bug that could lead to an application crash.
+
+# gnordvpn-sprokkel78 1.1.15
+- made improvements to the user interface.
+
+# gnordvpn-sprokkel78 1.1.14
+- made changes to the sensitivity of the widgets related to the meshnet module.
+- rearranged the settings and meshnet module in a different way.
+- added functionality for sending files.
+- window allowed for resizing and fullscreen.
+
+# gnordvpn-sprokkel78 1.1.13
+- bugfix for the show list button when disabling meshnet and the list is showing.
+- bugfix for the file completion dialog after accepting a file.
+- the file completion dialog will now respond to a failed download.
+- the file completion dialog will also respond to a canceled download.
+- the filesharing show list button will now only show awaiting downloads.
+- made changes to the sensitivity of the accept file button.
+
+# gnordvpn-sprokkel78 1.1.12
+- bugfix for the filesharing show list button.
+- added label with awareness for incoming files.
+- added functionality for accepting incoming files.
+- gnome-terminal is now handling incoming file transfers.
+
+# gnordvpn-sprokkel78 1.1.11
+- minor code changes.
+- added first part of the filesharing system.
+- added 'install.sh' script for system wide installation.
+- added 'uninstall.sh' script for system wide uninstallation.
+
+# gnordvpn-sprokkel78 1.1.10
+- bugfix to the device button in the meshnet module.
+
+# gnordvpn-sprokkel78 1.1.9
+- made changes to the workings of the meshnet module. It should be more
+  stable now.
+
+# gnordvpn-sprokkel78 1.1.8
+- added the threat protection lite setting to the user interface.
+- added the meshnet module settings to the user interface.
+
+# gnordvpn-sprokkel78 1.1.7
+- pressing CTRL-q will now quit the application.
+- pressing CTRL-m will now minimize the application.
+- added the auto-connect setting to the user interface.
+- added the notification setting to the user interface.
+- added the analytics setting to the user interface.
+- added the ipv6 setting to the user interface.
+- added the lan-discovery setting to the user interface.
+- changed the behaviour of the dropdown menu's for the settings.
+- tested and build for nordvpn version 3.16.6
+
+# gnordvpn-sprokkel78 1.1.6
+- added the routing setting to the user interface.
+- changed the style setup for widgets to css instead of Pango.
+- other minor changes to the code and the user interface.
+- tested and build for nordvpn version 3.16.5
+
+# gnordvpn-sprokkel78 1.1.5
+- changed font of the textview widget to monospace 9 for increased readability.
+- application icon only gets loaded if it can be found.
+
+# gnordvpn-sprokkel78 1.1.4
+- added application icon to the python3 project files.
+- fixed code for not finding the application window icon at startup. (gnordvpn.svg) 
+
+# gnordvpn-sprokkel78 1.1.3
+- this version was used for testing the pypi.org upload framework.
+
+# gnordvpn-sprokkel78 1.1.2
+- initial release on pypi.org, this version lacks several project files.
+
+# gnordvpn-sprokkel78 1.1.1
+- proof of concept.

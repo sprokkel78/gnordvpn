@@ -1,0 +1,6 @@
+Package: gnordvpn-sprokkel78
+Version: 1.1.10
+Architecture: all
+Maintainer: Sprokkel78 <sprokkel78.bart@gmail.com>
+Description: A graphical user interface for using the nordvpn client binary on linux systems.
+

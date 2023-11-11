@@ -1,0 +1,3 @@
+include *.svg
+include *.txt
+include *.css
