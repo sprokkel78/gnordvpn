@@ -1,8 +1,0 @@
-setup.py
-GNordVPN/gnordvpn.py
-GNordVPN.egg-info/PKG-INFO
-GNordVPN.egg-info/SOURCES.txt
-GNordVPN.egg-info/dependency_links.txt
-GNordVPN.egg-info/entry_points.txt
-GNordVPN.egg-info/requires.txt
-GNordVPN.egg-info/top_level.txt
