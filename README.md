@@ -1,17 +1,28 @@
-# gtop
+# gnordvpn
 
-A graphical user interface in pygtk for Process and Network overview on Mac mini.
-It requires Homebrew, Python3.11 and PyGObject.
+A graphical user interface in PyGTK for using the nordvpn client binary on Ubuntu and other Linux distro's. 
+It requires Python3.10 or higher, Pip, Venv and the PyGTK apps, it also relies on gnome-terminal for accepting
+and sending files. Developed and tested on Ubuntu 23.04. 
 
-1. Install Homebrew
-2. $/opt/homebrew/bin/brew install python3 python3-pip
-3. $/opt/homebrew/bin/brew install pygobject3 gtk+3
-4. $/opt/homebrew/bin/pip3 install psutil
-5. $/opt/homebrew/bin/pip3 install gtop-sprokkel78
-6. $cd /opt/homebrew/lib/python3.11/site-packages/gtop_sprokkel78
-7. $/opt/homebrew/bin/python3 ./gtop.py
+Installation on Ubuntu 23.04
 
-Don't forget to run the app with the python3 binary that was installed 
-with homebrew. It's in /opt/homebrew/bin/python3  
+1. $sudo apt install python3 python3-dev python3-pip python3-venv
+2. $sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-3.0
+3. $sudo apt install gnome-terminal
+4. $python3 -m venv --system-site-packages /home/USERNAME/Python3
+5. $cd /home/USERNAME/Python3/bin
+6. $./pip install gnordvpn-sprokkel78
+7. $cd /home/USERNAME/Python3/lib/python3.11/site-packages/gnordvpn_sprokkel78
+8. $/home/USERNAME/Python3/bin/python3 ./gnordvpn.py
 
-Note: You must run gtop.py from it's own directory or it won't find the css file.
+Note: You must start gnordvpn.py from its own directory or it will not find the css file.
+Note: check CHANGELOG.txt for additional notes and changes.
+
+Added 'install.sh' script for system-wide installation.
+- The startup shell script will be /usr/bin/gnordvpn
+- The application is installed in /usr/share/gnordvpn-sprokkel78
+- The .desktop file is placed in /usr/share/applications
+
+Added 'uninstall.sh' script for system-wide uninstallation.
+- This will delete /usr/bin/gnordvpn and /usr/share/gnordvpn-sprokkel78,
+  This will also remove /usr/share/applications/gnordvpn.desktop

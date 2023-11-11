@@ -1,0 +1,31 @@
+/* css style */
+
+* * {
+    font: 12px monospace;
+}
+
+#label {
+    font: 12px monospace;
+}
+
+#textview {
+    font: 12px monospace;
+}
+
+#cbbox {
+	font: 12px monospace;
+}
+
+#connected {
+	font: 12px monospace;
+    color: white;
+    font-weight: bold;
+    background-color: green;
+}
+
+#disconnected {
+	font: 12px monospace;
+    color: white;
+    font-weight: bold;
+    background-color: red;
+}
