@@ -4,28 +4,38 @@ GNORDVPN-SPROKKEL78
 NOTES:
 -----
 
-- If you make changes to the setting TECHNOLOGY or PROTOCOL then you must reconnect
-  for them to apply. The PROTOCOL setting can only be changed when using the OPENVPN
+- If you make CHANGES to the setting TECHNOLOGY or PROTOCOL then you must RECONNECT
+  for them to apply. The PROTOCOL setting can only be CHANGED when using the OPENVPN
   Technology.
-
-- The Meshnet Module can only be enabled with a working internet connection. 
-  Without a working internet connection the app might take a while to respond and the desktop
-  can popup a force-quit window.
 
 - The routing setting can only be changed if Meshnet is disabled.
   
-- Sending and receiving files with meshnet uses gnome-terminal for progress.
+- Sending and receiving files with meshnet uses GNOME-TERMINAL for progress.
 
-- Setting Custom DNS will disable Threat Protection Lite.
+- Setting Custom DNS will DISABLE Threat Protection Lite and visa versa.
 
-- Making changes to the obfuscate setting requires a reconnection to take effect.
+- Making CHANGES to the OBFUSCATE setting requires a RECONNECTION to take effect.
 - Obfuscate can only be enabled with OPENVPN Technology.
+
+- Adding Private Network Addresses as a subnet to the allowlist is only possible 
+  if LAN DISCOVERY is turned OFF.
 
 Pressing CTRL-q will quit the application.
 Pressing CTRL-m will iconify the application.
 
 CHANGELOG
 ---------
+
+# gnordvpn-sprokkel78 1.2.8
+- duplicate of 1.2.7 but with different README.txt.
+
+# gnordvpn-sprokkel78 1.2.7
+- update to the userinterface, menu is now iconized.
+
+# gnordvpn-sprokkel78 1.2.6
+- added the allowlist function to the user interface.
+- added a dialogue popup incase the connection to nordvpn fails due to incorrect settings.
+- made other minor changes to the user interface.
 
 # gnordvpn-sprokkel78 1.2.5
 - bugfix for the send file and select file entries in the meshnet module.

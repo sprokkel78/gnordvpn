@@ -9,8 +9,8 @@ from gi.repository import Gtk, GLib, Gdk
 from threading import Thread
 from time import sleep
 
-# VERSION = 1.2.5
-ver = "1.2.5"
+# VERSION = 1.2.8
+ver = "1.2.8"
 
 
 # TODO
@@ -100,6 +100,18 @@ def Button_Connect_Clicked(obj):
 			stat = 1
 		else:
 			stat = 0
+		if " not available " in out[0]:
+			dialog = Gtk.MessageDialog(
+				title="gNordVPN",
+				parent=win,
+				flags=0,
+				message_type=Gtk.MessageType.INFO,
+				buttons=Gtk.ButtonsType.OK,
+				text="The specified server is not available,\nor the connection settings are wrong.\nTry changing the Technology setting."
+			)
+			dialog.run()
+			dialog.destroy()
+
 	else:
 		status = subprocess.Popen("/usr/bin/nordvpn c", shell=True,
 								stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
@@ -109,6 +121,17 @@ def Button_Connect_Clicked(obj):
 			stat = 1
 		else:
 			stat = 0
+		if " not available " in out[0]:
+			dialog = Gtk.MessageDialog(
+				title="gNordVPN",
+				parent=win,
+				flags=0,
+				message_type=Gtk.MessageType.INFO,
+				buttons=Gtk.ButtonsType.OK,
+				text="The specified server is not available,\nor the connection settings are wrong.\nTry changing the Technology setting."
+			)
+			dialog.run()
+			dialog.destroy()
 
 
 def Button_Disconnect_Clicked(obj):
@@ -403,7 +426,25 @@ def Get_Nordvpn_Status():
             MES = 1
             GLib.idle_add(UpdateUI_Meshnet_On, 1)
 
+        a = 0
+        b = 0
+        text = "\n Allowlist"
+        while a < len(lsettings):
+            if "Allowlisted" in lsettings[a]:
+                text = text + "\n\n"
+                b = 1
+            if b == 1 and "Allowlisted" not in lsettings[a]:
+                text = text + " -> " + lsettings[a].strip()
+
+            a = a + 1
+
+        GLib.idle_add(Update_Allowlist_View, text)
+
         sleep(4)
+
+
+def Update_Allowlist_View(text):
+    tbuffer_allow.set_text(text)
 
 
 def UpdateUI_OBF_Off(value):
@@ -782,44 +823,82 @@ def Accept_File(obj):
 
 
 def Button_Settings_Clicked(obj):
-	box22a.show()
-	box22b.show()
-	box22c.show()
-	box22d.show()
-	box22e.show()
-	box22f.show()
-	box22g.show()
-	box22h.show()
+    box22a.show()
+    box22b.show()
+    box22c.show()
+    box22d.show()
+    box22e.show()
+    box22f.show()
+    box22g.show()
+    box22h.show()
 
-	box33a.hide()
-	box33b.hide()
-	box33c.hide()
-	box33d.hide()
-	box33e.hide()
-	box33f.hide()
-	box33g.hide()
-	box33h.hide()
-	box33i.hide()
+    box33a.hide()
+    box33b.hide()
+    box33c.hide()
+    box33d.hide()
+    box33e.hide()
+    box33f.hide()
+    box33g.hide()
+    box33h.hide()
+    box33i.hide()
+
+    box44a.hide()
+    box44b.hide()
+    box44c.hide()
+    box44d.hide()
+
 
 def Button_Mshnet_Clicked(obj):
-	box22a.hide()
-	box22b.hide()
-	box22c.hide()
-	box22d.hide()
-	box22e.hide()
-	box22f.hide()
-	box22g.hide()
-	box22h.hide()
+    box22a.hide()
+    box22b.hide()
+    box22c.hide()
+    box22d.hide()
+    box22e.hide()
+    box22f.hide()
+    box22g.hide()
+    box22h.hide()
 
-	box33a.show()
-	box33b.show()
-	box33c.show()
-	box33d.show()
-	box33e.show()
-	box33f.show()
-	box33g.show()
-	box33h.show()
-	box33i.show()
+    box33a.show()
+    box33b.show()
+    box33c.show()
+    box33d.show()
+    box33e.show()
+    box33f.show()
+    box33g.show()
+    box33h.show()
+    box33i.show()
+
+    box44a.hide()
+    box44b.hide()
+    box44c.hide()
+    box44d.hide()
+
+
+def Button_Allowlist_Clicked(obj):
+    box22a.hide()
+    box22b.hide()
+    box22c.hide()
+    box22d.hide()
+    box22e.hide()
+    box22f.hide()
+    box22g.hide()
+    box22h.hide()
+
+    box33a.hide()
+    box33b.hide()
+    box33c.hide()
+    box33d.hide()
+    box33e.hide()
+    box33f.hide()
+    box33g.hide()
+    box33h.hide()
+    box33i.hide()
+
+    box44a.show()
+    box44b.show()
+    box44c.show()
+    box44d.show()
+
 
 def Choose_File(obj):
 	dialog = Gtk.FileChooserDialog(
@@ -982,6 +1061,126 @@ def Route_Traffic(obj):
 				dialog.destroy()
 
 
+def Allow_Net_Add(obj):
+    item = entry_allow_net.get_text()
+    x = 0
+    try:
+        ipaddress.IPv4Network(item)
+        x = 1
+    except (ValueError):
+        x = 0
+
+    if x == 1 and item != "":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn allowlist add subnet " + item,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+    else:
+        if item != "":
+            dialog = Gtk.MessageDialog(
+                title="gNordVPN",
+                parent=win,
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text="Error parsing subnet."
+            )
+            dialog.run()
+            dialog.destroy()
+
+
+def Allow_Port_Add(obj):
+    item = entry_allow_port.get_text()
+    check1 = item.split(" ")
+    if len(check1) > 1:
+        port1 = check1[0]
+        port2 = check1[1]
+    else:
+        port1 = item
+        port2 = ""
+
+    x = 0
+    if port1 != "":
+        try:
+            port = int(port1)
+            if 0 < port <= 65535:
+                x = 1
+        except ValueError:
+            x = 0
+
+    y = 0
+    if port2 != "":
+        try:
+            port = int(port2)
+            if 0 < port <= 65535:
+                y = 1
+        except ValueError:
+            y = 0
+
+    protocol = combobox_allow_port.get_model()[combobox_allow_port.get_active()]
+    # print(protocol[0])
+    if x == 1 and y == 1 and protocol[0] == "Both":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn allowlist add ports " + port1 + " " + port2,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+
+    if x == 1 and y == 1 and protocol[0] == "TCP":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn allowlist add ports " + port1 + " " + port2 + " protocol TCP",
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+
+    if x == 1 and y == 1 and protocol[0] == "UDP":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn allowlist add ports " + port1 + " " + port2 + " protocol UDP",
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+
+
+    if x == 1 and y == 0 and protocol[0] == "Both":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn allowlist add port " + port1,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+
+
+    if x == 1 and y == 0 and protocol[0] == "TCP":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn allowlist add port " + port1 + " protocol TCP",
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+
+    if x == 1 and y == 0 and protocol[0] == "UDP":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn allowlist add ports " + port1 + " protocol UDP",
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+
+
+def Button_Allow_Clear(obj):
+    status = subprocess.Popen(
+        "/usr/bin/nordvpn allowlist remove all",
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE, universal_newlines=True)
+    rcstat = status.wait()
+
+
 # MAIN USER INTERFACE CODE
 
 # CREATE THE MAIN WINDOW
@@ -1024,9 +1223,15 @@ sep9.show()
 
 
 # CREATE THE GUI CONTAINER
+box_main = Gtk.HBox(spacing=6)
+box_main.show()
+box0 = Gtk.VBox(spacing=6)
+box0.show()
+box_main.pack_start(box0, False, False, 0)
 box1 = Gtk.VBox(spacing=6)
 box1.show()
-win.add(box1)
+box_main.pack_start(box1, False, False, 0)
+win.add(box_main)
 box11a = Gtk.Box(spacing=6)
 box11a.show()
 box11a.pack_start(sep1, True, True, 0)
@@ -1098,6 +1303,16 @@ box1.pack_start(box33h, False, False, 0)
 box33i = Gtk.Box(spacing=6)
 box1.pack_start(box33i, False, False, 0)
 
+# ALLOWLIST
+box44a = Gtk.Box(spacing=6)
+box1.pack_start(box44a, False, False, 0)
+box44b = Gtk.Box(spacing=6)
+box1.pack_start(box44b, False, False, 0)
+box44c = Gtk.Box(spacing=6)
+box1.pack_start(box44c, False, False, 0)
+box44d = Gtk.Box(spacing=6)
+box1.pack_start(box44d, False, False, 0)
+
 # FOOTER
 box99a = Gtk.Box(spacing=6)
 box99a.show()
@@ -1125,10 +1340,6 @@ label1.set_text("NVPN Connection")
 label1.set_width_chars(13)
 label1.set_size_request(135, -1)
 box11b.pack_start(label1, False, False, 0)
-# label1a = Gtk.Label()
-# label1a.show()
-# label1a.set_width_chars(1)
-# box11b.pack_start(label1a, False, False, 0)
 
 liststore1 = Gtk.ListStore(str)
 liststore1.append(['Select Country  '])
@@ -1237,22 +1448,50 @@ scrolled_window.add(textview)
 box11d.pack_start(scrolled_window, True, True, 0)
 
 # CREATE THE BUTTON BAR
-label_buttons = Gtk.Label()
+label_buttons = Gtk.Separator()
 label_buttons.show()
-label_buttons.set_width_chars(1)
-box11e.pack_start(label_buttons, False, False, 0)
-button_settings = Gtk.Button.new_with_label("Settings")
-# button_settings.set_name("menu_button")
-button_settings.set_size_request(140, -1)
+label_buttons.set_size_request(1, 1)
+box0.pack_start(label_buttons, False, False, 0)
+menu_button = Gtk.Button()
+menu_button.show()
+menu_image = Gtk.Image()
+menu_image.show()
+menu_image.set_from_file("./images/b_menu.png")
+menu_button.set_image(menu_image)
+menu_button.set_tooltip_text("Menu")
+box0.pack_start(menu_button, False, False, 0)
+sep_buttons = Gtk.Separator()
+sep_buttons.show()
+sep_buttons.set_size_request(1, 1)
+box0.pack_start(sep_buttons, False, False, 0)
+button_settings = Gtk.Button()
 button_settings.connect("clicked", Button_Settings_Clicked)
 button_settings.show()
-button_mshnet = Gtk.Button.new_with_label("Meshnet")
-# button_mshnet.set_name("menu_button")
-button_mshnet.set_size_request(140, -1)
+button_settings.set_tooltip_text("Settings")
+settings_image = Gtk.Image()
+settings_image.show()
+settings_image.set_from_file("./images/b_settings.png")
+button_settings.set_image(settings_image)
+button_mshnet = Gtk.Button()
 button_mshnet.connect("clicked", Button_Mshnet_Clicked)
 button_mshnet.show()
-box11e.pack_start(button_settings, False, False, 0)
-box11e.pack_start(button_mshnet, False, False, 0)
+button_mshnet.set_tooltip_text("Meshnet")
+meshnet_image = Gtk.Image()
+meshnet_image.show()
+meshnet_image.set_from_file("./images/b_meshnet.png")
+button_mshnet.set_image(meshnet_image)
+button_allowlist = Gtk.Button()
+button_allowlist.connect("clicked", Button_Allowlist_Clicked)
+button_allowlist.show()
+button_allowlist.set_tooltip_text("Allowlist")
+allowlist_image = Gtk.Image()
+allowlist_image.show()
+allowlist_image.set_from_file("./images/b_allowlist.png")
+button_allowlist.set_image(allowlist_image)
+box0.pack_start(button_settings, False, False, 0)
+box0.pack_start(button_allowlist, False, False, 0)
+box0.pack_start(button_mshnet, False, False, 0)
+
 
 # CREATE EMPTY BAR
 label_empty = Gtk.Label()
@@ -1418,10 +1657,16 @@ box22c.pack_start(combobox6c, False, False, 0)
 
 box22d.pack_start(sep5, True, True, 0)
 
+box22e.set_size_request(-1, 40)
+label_obf_start = Gtk.Label()
+label_obf_start.show()
+label_obf_start.set_size_request(15, 10)
+box22e.pack_start(label_obf_start, False, False, 0)
 label_obf = Gtk.Label()
 label_obf.show()
+label_obf.set_xalign(0.0)
 label_obf.set_name("label")
-label_obf.set_width_chars(21)
+label_obf.set_size_request(140, -1)
 label_obf.set_text("Obfuscate Link")
 box22e.pack_start(label_obf, False, False, 0)
 button_obf = Gtk.CheckButton()
@@ -1442,10 +1687,16 @@ label_obf_txt.set_text("(OpenVPN Tech. only)")
 label_obf_txt.show()
 box22e.pack_start(label_obf_txt, False, False, 0)
 
+box22f.set_size_request(-1, 40)
+label_tpl_start = Gtk.Label()
+label_tpl_start.show()
+label_tpl_start.set_size_request(15, 10)
+box22f.pack_start(label_tpl_start, False, False, 0)
 label_tpl = Gtk.Label()
 label_tpl.show()
+label_tpl.set_xalign(0.0)
 label_tpl.set_name("label")
-label_tpl.set_width_chars(21)
+label_tpl.set_size_request(140, -1)
 label_tpl.set_text("Threat Pro_Lite")
 box22f.pack_start(label_tpl, False, False, 0)
 button_tpl = Gtk.CheckButton()
@@ -1468,13 +1719,15 @@ box22f.pack_start(label_tpl_txt, False, False, 0)
 
 box22g.pack_start(sep6, True, True, 0)
 
-label_first = Gtk.Label()
-label_first.show()
-box22h.pack_start(label_first, False, False, 0)
+label_dns_start = Gtk.Label()
+label_dns_start.show()
+label_dns_start.set_size_request(15, 10)
+box22h.pack_start(label_dns_start, False, False, 0)
 label_dns = Gtk.Label()
+label_dns.set_xalign(0.0)
 label_dns.show()
 label_dns.set_name("label")
-label_dns.set_width_chars(20)
+label_dns.set_size_request(140, -1)
 label_dns.set_text("Set Custom DNS")
 box22h.pack_start(label_dns, False, False, 0)
 entry_dns = Gtk.Entry()
@@ -1483,16 +1736,21 @@ entry_dns.set_width_chars(15)
 entry_dns.set_size_request(140, -1)
 box22h.pack_start(entry_dns, False, False, 0)
 button_dns = Gtk.Button.new_with_label("Activate")
-button_dns.set_size_request(148, -1)
+button_dns.set_size_request(140, -1)
 button_dns.show()
 button_dns.connect("clicked", Activate_DNS)
 box22h.pack_start(button_dns, False, False, 0)
 
 # MESHNET MODULE BUTTON
+label_mes_start = Gtk.Label()
+label_mes_start.show()
+label_mes_start.set_size_request(15, 10)
+box33a.pack_start(label_mes_start, False, False, 0)
 label_mes = Gtk.Label()
 label_mes.show()
+label_mes.set_xalign(0.0)
 label_mes.set_name("label")
-label_mes.set_width_chars(21)
+label_mes.set_size_request(140, -1)
 label_mes.set_text("Meshnet Module")
 box33a.pack_start(label_mes, False, False, 0)
 button_mes = Gtk.CheckButton()
@@ -1503,7 +1761,7 @@ button_mes.connect("clicked", MES_Changed)
 box33a.pack_start(button_mes, False, False, 0)
 label_mes_status = Gtk.Label()
 label_mes_status.show()
-label_mes_status.set_size_request(105, -1)
+label_mes_status.set_size_request(103, -1)
 if MES == 0:
 	label_mes_status.set_text("Disabled")
 if MES == 1:
@@ -1518,17 +1776,22 @@ box33a.pack_start(button_device, False, False, 0)
 
 box33b.pack_start(sep7, True, True, 0)
 
+label_fs_start = Gtk.Label()
+label_fs_start.show()
+label_fs_start.set_size_request(15, 10)
+box33c.pack_start(label_fs_start, False, False, 0)
 label_fs = Gtk.Label()
 label_fs.show()
+label_fs.set_xalign(0.0)
 label_fs.set_name("label")
-label_fs.set_width_chars(21)
+label_fs.set_size_request(140, -1)
 label_fs.set_text("Filesharing")
 box33c.pack_start(label_fs, False, False, 0)
 label_fss = Gtk.Label()
 label_fss.show()
 label_fss.set_text("Incoming (0)")
 label_fss.set_xalign(0.0)
-label_fss.set_size_request(142, -1)
+label_fss.set_size_request(140, -1)
 box33c.pack_start(label_fss, False, False, 0)
 button_fs_list = Gtk.Button.new_with_label("   Show List   ")
 button_fs_list.show()
@@ -1536,16 +1799,21 @@ button_fs_list.set_size_request(140, -1)
 button_fs_list.connect("clicked", FS_Show_List)
 box33c.pack_start(button_fs_list, False, False, 0)
 
+label_fsi_start = Gtk.Label()
+label_fsi_start.show()
+label_fsi_start.set_size_request(15, 10)
+box33d.pack_start(label_fsi_start, False, False, 0)
 label_fsi = Gtk.Label()
 label_fsi.show()
+label_fsi.set_xalign(0.0)
 label_fsi.set_name("label")
-label_fsi.set_width_chars(21)
+label_fsi.set_size_request(140, -1)
 label_fsi.set_text("Get File_ID")
 box33d.pack_start(label_fsi, False, False, 0)
 entry_fsi = Gtk.Entry()
 entry_fsi.show()
 entry_fsi.set_width_chars(14)
-entry_fsi.set_size_request(142, -1)
+entry_fsi.set_size_request(140, -1)
 box33d.pack_start(entry_fsi, False, False, 0)
 button_fsi = Gtk.Button.new_with_label("Accept File")
 button_fsi.show()
@@ -1555,15 +1823,20 @@ box33d.pack_start(button_fsi, False, False, 0)
 
 box33e.pack_start(sep8, True, True, 0)
 
+label_sendf_start = Gtk.Label()
+label_sendf_start.show()
+label_sendf_start.set_size_request(15, 10)
+box33f.pack_start(label_sendf_start, False, False, 0)
 label_send_file = Gtk.Label()
 label_send_file.show()
+label_send_file.set_xalign(0.0)
 label_send_file.set_name("label")
 label_send_file.set_text("Send File")
-label_send_file.set_width_chars(21)
+label_send_file.set_size_request(140, -1)
 box33f.pack_start(label_send_file, False, False, 0)
 entry_send_file = Gtk.Entry()
 entry_send_file.set_width_chars(14)
-entry_send_file.set_size_request(142, -1)
+entry_send_file.set_size_request(140, -1)
 entry_send_file.set_editable(False)
 entry_send_file.show()
 box33f.pack_start(entry_send_file, False, False, 0)
@@ -1573,15 +1846,20 @@ button_send_file.show()
 button_send_file.connect("clicked", Choose_File)
 box33f.pack_start(button_send_file, False, False, 0)
 
+label_host_start = Gtk.Label()
+label_host_start.show()
+label_host_start.set_size_request(15, 10)
+box33g.pack_start(label_host_start, False, False, 0)
 label_host = Gtk.Label()
 label_host.show()
+label_host.set_xalign(0.0)
 label_host.set_name("label")
 label_host.set_text("To Host|Peer")
-label_host.set_width_chars(21)
+label_host.set_size_request(140, -1)
 box33g.pack_start(label_host, False, False, 0)
 entry_host = Gtk.Entry()
 entry_host.set_width_chars(14)
-entry_host.set_size_request(142, -1)
+entry_host.set_size_request(140, -1)
 entry_host.show()
 box33g.pack_start(entry_host, False, False, 0)
 button_send_host = Gtk.Button.new_with_label("Send File")
@@ -1592,15 +1870,20 @@ box33g.pack_start(button_send_host, False, False, 0)
 
 box33h.pack_start(sep9, True, True, 0)
 
+label_route_start = Gtk.Label()
+label_route_start.show()
+label_route_start.set_size_request(15, 10)
+box33i.pack_start(label_route_start, False, False, 0)
 label_route = Gtk.Label()
 label_route.show()
+label_route.set_xalign(0.0)
 label_route.set_name("label")
 label_route.set_text("Route Traffic")
-label_route.set_width_chars(21)
+label_route.set_size_request(140, -1)
 box33i.pack_start(label_route, False, False, 0)
 entry_route = Gtk.Entry()
 entry_route.set_width_chars(14)
-entry_route.set_size_request(142, -1)
+entry_route.set_size_request(140, -1)
 entry_route.show()
 box33i.pack_start(entry_route, False, False, 0)
 button_route = Gtk.Button.new_with_label("Connect")
@@ -1609,8 +1892,92 @@ button_route.show()
 button_route.connect("clicked", Route_Traffic)
 box33i.pack_start(button_route, False, False, 0)
 
+# ALLOWLIST BUTTON
+label_allow_start = Gtk.Label()
+label_allow_start.show()
+label_allow_start.set_size_request(15, 10)
+box44a.pack_start(label_allow_start, False, False, 0)
+label_allow_net = Gtk.Label()
+label_allow_net.show()
+label_allow_net.set_xalign(0.0)
+label_allow_net.set_text("Allow Subnet")
+label_allow_net.set_size_request(140, -1)
+box44a.pack_start(label_allow_net, False, False, 0)
+entry_allow_net = Gtk.Entry()
+entry_allow_net.set_width_chars(14)
+entry_allow_net.set_size_request(140, -1)
+entry_allow_net.show()
+box44a.pack_start(entry_allow_net, False, False, 0)
+button_allow_net_add = Gtk.Button.new_with_label("Add to list")
+button_allow_net_add.set_size_request(140, -1)
+button_allow_net_add.connect("clicked", Allow_Net_Add)
+button_allow_net_add.show()
+box44a.pack_start(button_allow_net_add, False, False, 0)
 
-# ADD A STATUSBAR WITH NORDVPN VERSION
+label_port_start = Gtk.Label()
+label_port_start.show()
+label_port_start.set_size_request(15, 10)
+box44b.pack_start(label_port_start, False, False, 0)
+label_allow_port = Gtk.Label()
+label_allow_port.show()
+label_allow_port.set_xalign(0.0)
+label_allow_port.set_text("Allow Port(s)")
+label_allow_port.set_size_request(140, -1)
+box44b.pack_start(label_allow_port, False, False, 0)
+entry_allow_port = Gtk.Entry()
+entry_allow_port.set_width_chars(5)
+entry_allow_port.set_size_request(65, -1)
+entry_allow_port.show()
+box44b.pack_start(entry_allow_port, False, False, 0)
+liststore_allow_port = Gtk.ListStore(str)
+liststore_allow_port.append(['Both'])
+liststore_allow_port.append(['TCP'])
+liststore_allow_port.append(['UDP'])
+cell_allow_port = Gtk.CellRendererText()
+combobox_allow_port = Gtk.ComboBox()
+combobox_allow_port.set_size_request(70, -1)
+combobox_allow_port.show()
+combobox_allow_port.set_name("cbbox")
+combobox_allow_port.pack_start(cell_allow_port, True)
+combobox_allow_port.add_attribute(cell_allow_port, 'text', 0)
+combobox_allow_port.set_model(liststore_allow_port)
+combobox_allow_port.set_active(0)
+box44b.pack_start(combobox_allow_port, False, False, 0)
+button_allow_port_add = Gtk.Button.new_with_label("Add to list")
+button_allow_port_add.set_size_request(140, -1)
+button_allow_port_add.connect("clicked", Allow_Port_Add)
+button_allow_port_add.show()
+box44b.pack_start(button_allow_port_add, False, False, 0)
+
+label_start = Gtk.Label()
+label_start.set_width_chars(1)
+label_start.show()
+box44c.pack_start(label_start, False, False, 0)
+scrolled_window_allow = Gtk.ScrolledWindow()
+scrolled_window_allow.show()
+tbuffer_allow = Gtk.TextBuffer()
+textview_allow = Gtk.TextView.new_with_buffer(tbuffer_allow)
+textview_allow.show()
+scrolled_window_allow.set_size_request(440, 150)
+textview_allow.set_name("textview")
+textview_allow.set_buffer(tbuffer_allow)
+textview_allow.set_editable(False)
+textview_allow.set_wrap_mode(Gtk.WrapMode.WORD)
+scrolled_window_allow.add(textview_allow)
+box44c.pack_start(scrolled_window_allow, False, False, 0)
+tbuffer_allow.set_text("\n   AllowList")
+
+label_start1 = Gtk.Label()
+label_start1.set_width_chars(1)
+label_start1.show()
+box44d.pack_start(label_start1, False, False, 0)
+button_allow_clear = Gtk.Button.new_with_label("Clear")
+button_allow_clear.set_size_request(140, -1)
+button_allow_clear.connect("clicked", Button_Allow_Clear)
+button_allow_clear.show()
+box44d.pack_start(button_allow_clear, False, False, 0)
+
+# FOOTER: ADD A STATUSBAR WITH NORDVPN VERSION
 sb = Gtk.Statusbar()
 sb.show()
 box99c.pack_start(sb, True, True, 0)

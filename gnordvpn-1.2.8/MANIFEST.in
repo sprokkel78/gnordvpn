@@ -1,6 +1,0 @@
-include *.svg
-include *.txt
-include *.css
-include *.sh
-include *.desktop
-include *.png
