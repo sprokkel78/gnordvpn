@@ -26,6 +26,9 @@ Pressing CTRL-m will iconify the application.
 CHANGELOG
 ---------
 
+# gnordvpn-sprokkel78 1.2.9
+-
+
 # gnordvpn-sprokkel78 1.2.8
 - duplicate of 1.2.7 but with different README.txt.
 
