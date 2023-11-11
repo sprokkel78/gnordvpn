@@ -1,0 +1,40 @@
+# GTOP-SPROKKEL78
+
+# NOTES:
+
+- ctrl-q will now quit the application
+- ctrl-h will now hide or minimise the application
+
+# CHANGELOG
+
+# gtop-sprokkel78 1.1.7
+- .
+
+# gtop-sprokkel78 1.1.6
+- Added Total Network Usage in Gigabytes in the Traffic Menu.
+- Changed the Pause/Start button to icons pause/play.
+- Added Networking Applications to the menu list.
+- made Current Network Usage available to all menu items.
+
+# gtop-sprokkel78 1.1.5
+- ctrl-q will now quit the application
+- ctrl-h will now hide or minimise the application
+- tested with success on python3.12 without any known issues.
+- tested with success on macOS 14.1 without any known issues.
+- Using Python3.12 as basic interpreter from here on.
+- rearranged the user interface
+- made icons for menu buttons
+
+# gtop-sprokkel78 1.1.4
+- fixed a visual bug in the traffic tab.
+- added the PID number to the sockets in the CONNECTIONS tab.
+- fixed a bug that presented itself when going fullscreen.
+
+# gtop-sprokkel78 1.1.3
+- Changed user interface style to css instead of Pango.
+
+# gtop-sprokkel78 1.1.2
+- fixed the import of the Gtk version before loading it.
+
+# gtop-sprokkel78 1.1.1
+- proof of concept

@@ -1,0 +1,42 @@
+/* style.css */
+
+* * {
+    font: 14px monospace;
+}
+
+#button-system {
+}
+
+#textview {
+	font: 14px monospace;
+
+}
+
+#label {
+	font: 14px monospace;
+}
+
+#combobox {
+	font: 14px monospace;
+}
+
+#entry {
+	font: 14px monospace;
+}
+
+#statusbar {
+	font: 14px monospace;
+}
+
+
+#gtmenu {
+    color: white;
+    text-decoration-line: underline;
+    font-weight: bold;
+}
+
+#menu {
+    color: white;
+    text-decoration-line: underline;
+    font-weight: bold;
+}
