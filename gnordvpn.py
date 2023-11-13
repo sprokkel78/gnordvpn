@@ -267,7 +267,7 @@ else:
 # CODE HANDLER FUNCTIONS
 
 def Stop_Application(obj):
-    Gtk.main_quit()
+    # Gtk.main_quit()
     sys.exit(0)
 
 
@@ -2096,10 +2096,13 @@ thread = Thread(target=Get_Nordvpn_Status)
 thread.daemon = True
 thread.start()
 
+
 # START A THREAD THAT GETS THE INCOMING FILE LIST EVERY 10 SECONDS
 thread1 = Thread(target=Get_Incoming_Files)
 thread1.daemon = True
 thread1.start()
+
+sleep(1)
 
 # START THE APPLICATION
 app = MyApplication()

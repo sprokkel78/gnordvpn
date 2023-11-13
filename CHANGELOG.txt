@@ -30,6 +30,7 @@ CHANGELOG
 - added a directory check at startup incase the app is started from a wrong path.
 - changed the main window into an Application Window.
 - small user interface update.
+- fix for gtk_main_quit warning.
 
 # gnordvpn-sprokkel78 1.2.8
 - duplicate of 1.2.7 but with different README.txt.
