@@ -20,17 +20,27 @@ NOTES:
 - Adding Private Network Addresses as a subnet to the allowlist is only possible 
   if LAN DISCOVERY is turned OFF.
 
+BUGS
+----
+- First time the app is run it can show an empty window. Quit the app and restart
+  should fix that. (Weird bug, must have something to do with the Gtk Application
+  Window, I think.) 
+
+CONTROL KEYS
+------------
 Pressing CTRL-q will quit the application.
-Pressing CTRL-m will iconify the application.
+Pressing CTRL-m will minimize the application.
 
 CHANGELOG
 ---------
 
 # gnordvpn-sprokkel78 1.2.9
-- added a directory check at startup incase the app is started from a wrong path.
-- changed the main window into an Application Window.
+- added a directory check at startup in case the app is started from a wrong path.
+- changed the main window into an GTK Application Window.
 - small user interface update.
 - fix for gtk_main_quit warning.
+- added meshnet response dialogue in case meshnet can't reach the servers.
+- README.txt is now README.md in the source directory.
 
 # gnordvpn-sprokkel78 1.2.8
 - duplicate of 1.2.7 but with different README.txt.
@@ -89,7 +99,7 @@ CHANGELOG
 - made changes to the sensitivity of the widgets related to the meshnet module.
 - rearranged the settings and meshnet module in a different way.
 - added functionality for sending files.
-- window allowed for resizing and fullscreen.
+- window allowed for resizing and full screen.
 
 # gnordvpn-sprokkel78 1.1.13
 - bugfix for the show list button when disabling meshnet and the list is showing.
@@ -130,7 +140,7 @@ CHANGELOG
 - added the analytics setting to the user interface.
 - added the ipv6 setting to the user interface.
 - added the lan-discovery setting to the user interface.
-- changed the behaviour of the dropdown menu's for the settings.
+- changed the behavier of the dropdown menu's for the settings.
 - tested and build for nordvpn version 3.16.6
 
 # gnordvpn-sprokkel78 1.1.6

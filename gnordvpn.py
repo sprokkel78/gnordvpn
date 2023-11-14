@@ -267,7 +267,6 @@ else:
 # CODE HANDLER FUNCTIONS
 
 def Stop_Application(obj):
-    # Gtk.main_quit()
     sys.exit(0)
 
 
@@ -775,6 +774,16 @@ def MES_Changed(obj):
                 MES = 1
             else:
                 MES = 0
+                dialog = Gtk.MessageDialog(
+                    title="gNordVPN",
+                    parent=win,
+                    flags=0,
+                    message_type=Gtk.MessageType.INFO,
+                    buttons=Gtk.ButtonsType.OK,
+                    text="We're having trouble reaching our servers. Please try again later. If the issue persists, please contact nordvpn customer support."
+                )
+                dialog.run()
+                dialog.destroy()
             y = y + 1
 
         if x == 1:
