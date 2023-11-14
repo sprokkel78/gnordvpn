@@ -1556,7 +1556,7 @@ class MyApplication(Gtk.Application):
         global tbuffer
         textview = Gtk.TextView.new_with_buffer(tbuffer)
         textview.show()
-        scrolled_window.set_size_request(500, 390)
+        scrolled_window.set_size_request(500, 360)
         textview.set_name("textview")
         textview.set_buffer(tbuffer)
         textview.set_editable(False)
