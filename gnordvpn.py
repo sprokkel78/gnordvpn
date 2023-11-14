@@ -1,4 +1,5 @@
 import ipaddress
+import random
 import subprocess
 import socket
 import sys
@@ -1367,12 +1368,13 @@ def Button_Help_Clicked(obj):
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
     def __init__(self):
-        super().__init__(application_id="com.sprokkel78.gnordvpn")
+        x = random.randint(1, 100)
+        super().__init__(application_id="com.sprokkel78-" + str(x) + ".gnordvpn")
         GLib.set_application_name("gNordVPN")
 
     def do_activate(self):
         global win
-        win = Gtk.ApplicationWindow(application=self, title="Hello World")
+        win = Gtk.ApplicationWindow(application=self, title="gnordvpn")
 
         # MAIN USER INTERFACE CODE
         # CREATE THE MAIN WINDOW
@@ -1554,7 +1556,7 @@ class MyApplication(Gtk.Application):
         global tbuffer
         textview = Gtk.TextView.new_with_buffer(tbuffer)
         textview.show()
-        scrolled_window.set_size_request(500, 360)
+        scrolled_window.set_size_request(500, 390)
         textview.set_name("textview")
         textview.set_buffer(tbuffer)
         textview.set_editable(False)
