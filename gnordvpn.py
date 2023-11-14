@@ -1384,6 +1384,7 @@ class MyApplication(Gtk.Application):
         win.set_resizable(False)
         win.connect("destroy", Stop_Application)
         win.connect("key-press-event", Key_Event)
+        win.add(box_main)
 
         css_provider = Gtk.CssProvider()
         css_provider.load_from_path('./gnordvpn.css')
@@ -1393,7 +1394,6 @@ class MyApplication(Gtk.Application):
         context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
         # BUILT USER INTERFACE
-        win.add(box_main)
 
         # CONSOLE
         box_main.pack_start(box0, False, False, 0)
