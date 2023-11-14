@@ -1355,6 +1355,15 @@ def Button_Allow_Clear(obj):
     rcstat = status.wait()
 
 
+def Button_Help_Clicked(obj):
+    status = subprocess.Popen(
+        "gnome-terminal -- bash -c 'man nordvpn'",
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE, universal_newlines=True)
+    rcstat = status.wait()
+
+
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
     def __init__(self):
@@ -1364,7 +1373,6 @@ class MyApplication(Gtk.Application):
     def do_activate(self):
         global win
         win = Gtk.ApplicationWindow(application=self, title="Hello World")
-        # window.present()
 
         # MAIN USER INTERFACE CODE
         # CREATE THE MAIN WINDOW
@@ -1434,6 +1442,7 @@ class MyApplication(Gtk.Application):
         box1.pack_start(box99b, False, False, 0)
         box1.pack_start(box99c, False, False, 0)
 
+        # CONSOLE
         label0 = Gtk.Label()
         label0.show()
         label0.set_width_chars(1)
@@ -1594,9 +1603,18 @@ class MyApplication(Gtk.Application):
         allowlist_image.show()
         allowlist_image.set_from_file("./images/b_allowlist.png")
         button_allowlist.set_image(allowlist_image)
+        button_help = Gtk.Button()
+        button_help.connect("clicked", Button_Help_Clicked)
+        button_help.show()
+        button_help.set_tooltip_text("Help")
+        help_image = Gtk.Image()
+        help_image.show()
+        help_image.set_from_file("./images/b_help.png")
+        button_help.set_image(help_image)
         box0.pack_start(button_settings, False, False, 0)
         box0.pack_start(button_allowlist, False, False, 0)
         box0.pack_start(button_mshnet, False, False, 0)
+        box0.pack_start(button_help, False, False, 0)
 
         # CREATE EMPTY BAR
         label_empty = Gtk.Label()
