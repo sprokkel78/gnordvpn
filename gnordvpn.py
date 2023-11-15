@@ -1139,7 +1139,7 @@ def Button_Peer_Clicked(obj):
     hostname = ""
 
     if MES == 1:
-        print("Updating Peers")
+        #print("Updating Peers")
         status = subprocess.Popen(
             "/usr/bin/nordvpn meshnet peer list | grep Hostname",
             shell=True,
@@ -1500,15 +1500,15 @@ def Peers_Changed(obj):
     global peer_permission_sending_files
 
     item = ""
-    print("ok")
+    #print("ok")
     #print("changed")
     active_index = combobox_peers.get_active()
     if active_index != -1:
-        print("ok")
+        #print("ok")
         item = combobox_peers.get_model()[combobox_peers.get_active()]
         if item[0] != "Select Peer":
-            print("ok")
-            print(item[0])
+            #print("ok")
+            #print(item[0])
             peer = item[0]
             status = subprocess.Popen(
                 "/usr/bin/nordvpn meshnet peer list",
@@ -1537,10 +1537,10 @@ def Peers_Changed(obj):
                         if "Allow Sending Files:" in host[y]:
                             peer_permission_sending_files = host[y]
                 y = y + 1
-            print("1 " + peer_permission_incoming_traffic)
-            print("2 " + peer_permission_routing)
-            print("3 " + peer_permission_lan)
-            print("4 " + peer_permission_sending_files)
+            #print("1 " + peer_permission_incoming_traffic)
+            #print("2 " + peer_permission_routing)
+            #print("3 " + peer_permission_lan)
+            #print("4 " + peer_permission_sending_files)
 
             if "enabled" in peer_permission_incoming_traffic:
                 cbutton_incoming_traffic.set_active(1)
@@ -1560,7 +1560,7 @@ def Peers_Changed(obj):
                 cbutton_sending_files.set_active(0)
 
         else:
-            print("leeg")
+            #print("leeg")
             peer_permission_incoming_traffic = ""
             peer_permission_routing = ""
             peer_permission_lan = ""
@@ -1570,8 +1570,6 @@ def Peers_Changed(obj):
             cbutton_routing.set_active(0)
             cbutton_lan.set_active(0)
             cbutton_sending_files.set_active(0)
-
-
 
 
 def Button_Update_Peers_Clicked(obj):
@@ -1588,7 +1586,7 @@ def Button_Update_Peers_Clicked(obj):
     peer_permission_sending_files = ""
 
     if MES == 1:
-        print("Updating Peers")
+        #print("Updating Peers")
         status = subprocess.Popen(
             "/usr/bin/nordvpn meshnet peer list | grep Hostname",
             shell=True,
