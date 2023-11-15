@@ -27,4 +27,4 @@ Added 'uninstall.sh' script for system-wide uninstallation.
 - This will delete /usr/bin/gnordvpn and /usr/share/gnordvpn-sprokkel78,
   This will also remove /usr/share/applications/gnordvpn.desktop
   
-Check https://www.github.com/sprokkel78/gnordvpn for pre-releases.
+Check https://www.github.com/sprokkel78/gnordvpn for development features and pre-releases.
