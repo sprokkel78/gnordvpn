@@ -42,6 +42,7 @@ CHANGELOG
 - README.txt is now README.md in the source directory.
 - added a help button which shows the nordvpn man.`
 - fixed empty window bug.
+- added peer permissions to menu.
 
 # gnordvpn-sprokkel78 1.2.8
 - duplicate of 1.2.7 but with different README.txt.
