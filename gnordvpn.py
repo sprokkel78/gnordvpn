@@ -1493,13 +1493,22 @@ def Button_Help_Clicked(obj):
 
 def Peers_Changed(obj):
     global combobox_peers
+    global peer
+    global peer_permission_incoming_traffic
+    global peer_permission_routing
+    global peer_permission_lan
+    global peer_permission_sending_files
+
+    item = ""
+    print("ok")
     #print("changed")
     active_index = combobox_peers.get_active()
     if active_index != -1:
+        print("ok")
         item = combobox_peers.get_model()[combobox_peers.get_active()]
         if item[0] != "Select Peer":
+            print("ok")
             print(item[0])
-            global peer
             peer = item[0]
             status = subprocess.Popen(
                 "/usr/bin/nordvpn meshnet peer list",
@@ -1512,17 +1521,6 @@ def Peers_Changed(obj):
             host = out[0].split("\n")
             y = 0
             x = 0
-
-            global peer_permission_incoming_traffic
-            global peer_permission_routing
-            global peer_permission_lan
-            global peer_permission_sending_files
-
-            peer_permission_incoming_traffic = ""
-            peer_permission_routing = ""
-            peer_permission_lan = ""
-            peer_permission_sending_files = ""
-
             while y < len(host) -1:
                 if item[0] in host[y]:
                     x = 1
@@ -1539,33 +1537,41 @@ def Peers_Changed(obj):
                         if "Allow Sending Files:" in host[y]:
                             peer_permission_sending_files = host[y]
                 y = y + 1
+            print("1 " + peer_permission_incoming_traffic)
+            print("2 " + peer_permission_routing)
+            print("3 " + peer_permission_lan)
+            print("4 " + peer_permission_sending_files)
+
+            if "enabled" in peer_permission_incoming_traffic:
+                cbutton_incoming_traffic.set_active(1)
+            else:
+                cbutton_incoming_traffic.set_active(0)
+            if "enabled" in peer_permission_routing:
+                cbutton_routing.set_active(1)
+            else:
+                cbutton_routing.set_active(0)
+            if "enabled" in peer_permission_lan:
+                cbutton_lan.set_active(1)
+            else:
+                cbutton_lan.set_active(0)
+            if "enabled" in peer_permission_sending_files:
+                cbutton_sending_files.set_active(1)
+            else:
+                cbutton_sending_files.set_active(0)
+
         else:
+            print("leeg")
             peer_permission_incoming_traffic = ""
             peer_permission_routing = ""
             peer_permission_lan = ""
             peer_permission_sending_files = ""
+            peer = ""
+            cbutton_incoming_traffic.set_active(0)
+            cbutton_routing.set_active(0)
+            cbutton_lan.set_active(0)
+            cbutton_sending_files.set_active(0)
 
-    print("1 " + peer_permission_incoming_traffic)
-    print("2 " + peer_permission_routing)
-    print("3 " + peer_permission_lan)
-    print("4 " + peer_permission_sending_files)
 
-    if "enabled" in peer_permission_incoming_traffic:
-        cbutton_incoming_traffic.set_active(1)
-    else:
-        cbutton_incoming_traffic.set_active(0)
-    if "enabled" in peer_permission_routing:
-        cbutton_routing.set_active(1)
-    else:
-        cbutton_routing.set_active(0)
-    if "enabled" in peer_permission_lan:
-        cbutton_lan.set_active(1)
-    else:
-        cbutton_lan.set_active(0)
-    if "enabled" in peer_permission_sending_files:
-        cbutton_sending_files.set_active(1)
-    else:
-        cbutton_sending_files.set_active(0)
 
 
 def Button_Update_Peers_Clicked(obj):
