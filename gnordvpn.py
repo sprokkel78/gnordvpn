@@ -171,7 +171,7 @@ box55b = Gtk.Box(spacing=6)
 box55c = Gtk.Box(spacing=6)
 box55d = Gtk.Box(spacing=6)
 box55e = Gtk.Box(spacing=6)
-
+box55f = Gtk.Box(spacing=6)
 
 # FOOTER
 box99a = Gtk.Box(spacing=6)
@@ -1050,6 +1050,7 @@ def Button_Settings_Clicked(obj):
     box55c.hide()
     box55d.hide()
     box55e.hide()
+    box55f.hide()
 
     label_settings.set_text("SETTINGS")
 
@@ -1085,6 +1086,7 @@ def Button_Mshnet_Clicked(obj):
     box55c.hide()
     box55d.hide()
     box55e.hide()
+    box55f.hide()
 
     label_settings.set_text("MESHNET")
 
@@ -1121,7 +1123,7 @@ def Button_Allowlist_Clicked(obj):
     box55c.hide()
     box55d.hide()
     box55e.hide()
-
+    box55f.hide()
 
     label_settings.set_text("ALLOWLIST")
 
@@ -1196,6 +1198,7 @@ def Button_Peer_Clicked(obj):
     box55c.show()
     box55d.show()
     box55e.show()
+    box55f.show()
 
     label_settings.set_text("PEER PERMISSIONS")
 
@@ -1701,6 +1704,86 @@ def Cbutton_Sendf_Clicked(obj):
             rcstat = status.wait()
 
 
+def Button_Unlink_Peer_Clicked(obj):
+    global peer
+    if peer != "":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn meshnet peer remove " + peer,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+        out = status.communicate()
+        if "removed " in out[0]:
+            dialog = Gtk.MessageDialog(
+                title="gNordVPN",
+                parent=win,
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text="Peer has been removed."
+            )
+            dialog.run()
+            dialog.destroy()
+
+            global MES
+
+            global peer_permission_incoming_traffic
+            global peer_permission_routing
+            global peer_permission_lan
+            global peer_permission_sending_files
+
+            peer_permission_incoming_traffic = ""
+            peer_permission_routing = ""
+            peer_permission_lan = ""
+            peer_permission_sending_files = ""
+
+            if MES == 1:
+                # print("Updating Peers")
+                status = subprocess.Popen(
+                    "/usr/bin/nordvpn meshnet peer list | grep Hostname",
+                    shell=True,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE, universal_newlines=True)
+                rcstat = status.wait()
+                out = status.communicate()
+                # print(out)
+                host = out[0].split("\n")
+                liststore_peers.clear()
+                liststore_peers.append(['Select Peer'])
+                y = 0
+                while y < len(host) - 1:
+                    # print(host[y])
+                    hostname = host[y].split(" ")
+                    if y != 0:
+                        liststore_peers.append([hostname[1]])
+                    y = y + 1
+                combobox_peers.set_active(0)
+            if MES == 0:
+                liststore_peers.clear()
+                liststore_peers.append(['Select Peer'])
+                combobox_peers.set_active(0)
+                dialog = Gtk.MessageDialog(
+                    title="gNordVPN",
+                    parent=win,
+                    flags=0,
+                    message_type=Gtk.MessageType.INFO,
+                    buttons=Gtk.ButtonsType.OK,
+                    text="You must enable meshnet to update peers."
+                )
+                dialog.run()
+                dialog.destroy()
+        else:
+            dialog = Gtk.MessageDialog(
+                title="gNordVPN",
+                parent=win,
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text="Failed to remove peer."
+            )
+            dialog.run()
+            dialog.destroy()
 
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
@@ -1778,11 +1861,12 @@ class MyApplication(Gtk.Application):
 
         # PEER PERMISSIONS
         box1.pack_start(box55a, False, False, 0)
-        box1.pack_start(box55aa, False, False, 0)
         box1.pack_start(box55b, False, False, 0)
         box1.pack_start(box55c, False, False, 0)
         box1.pack_start(box55d, False, False, 0)
         box1.pack_start(box55e, False, False, 0)
+        box1.pack_start(box55aa, False, False, 0)
+        box1.pack_start(box55f, False, False, 0)
 
         box1.pack_start(box99a, True, True, 0)
 
@@ -2568,6 +2652,17 @@ class MyApplication(Gtk.Application):
         cbutton_sending_files.connect("clicked", Cbutton_Sendf_Clicked)
         box55e.pack_start(cbutton_sending_files, False, False, 0)
 
+        label55f = Gtk.Label()
+        label55f.show()
+        label55f.set_size_request(10, -1)
+        box55f.pack_start(label55f, False, False, 0)
+
+        button_unlink_peer = Gtk.Button.new_with_label("Unlink Peer")
+        button_unlink_peer.show()
+        button_unlink_peer.set_size_request(140, -1)
+        button_unlink_peer.connect("clicked", Button_Unlink_Peer_Clicked)
+        box55f.pack_start(button_unlink_peer, False, False, 0)
+        
         # FOOTER: ADD A STATUSBAR WITH NORDVPN VERSION
         sb = Gtk.Statusbar()
         sb.show()
