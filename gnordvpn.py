@@ -1500,6 +1500,8 @@ def Peers_Changed(obj):
     global peer_permission_sending_files
 
     item = ""
+    peer = ""
+
     #print("ok")
     #print("changed")
     active_index = combobox_peers.get_active()
@@ -1625,74 +1627,78 @@ def Button_Update_Peers_Clicked(obj):
 def Cbutton_Traffic_Clicked(obj):
     #print("1")
     global peer
-    if cbutton_incoming_traffic.get_active() == 1:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer incoming allow " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
-    else:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer incoming deny " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
+    if peer != "":
+        if cbutton_incoming_traffic.get_active() == 1:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer incoming allow " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
+        else:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer incoming deny " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
 
 def Cbutton_Routing_Clicked(obj):
     # print("2")
     global peer
-    if cbutton_routing.get_active() == 1:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer routing allow " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
-    else:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer routing deny " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
+    if peer != "":
+        if cbutton_routing.get_active() == 1:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer routing allow " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
+        else:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer routing deny " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
 
 def Cbutton_Lan_Clicked(obj):
     # print("3")
     global peer
-    if cbutton_lan.get_active() == 1:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer local allow " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
-    else:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer local deny " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
+    if peer != "":
+        if cbutton_lan.get_active() == 1:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer local allow " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
+        else:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer local deny " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
 
 def Cbutton_Sendf_Clicked(obj):
     #print("4")
     global peer
-    if cbutton_sending_files.get_active() == 1:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer fileshare allow " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
-    else:
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer fileshare deny " + peer,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
+    if peer != "":
+        if cbutton_sending_files.get_active() == 1:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer fileshare allow " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
+        else:
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer fileshare deny " + peer,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
 
 
 
