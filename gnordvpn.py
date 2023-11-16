@@ -1763,6 +1763,7 @@ class MyApplication(Gtk.Application):
         box1.pack_start(box33a, False, False, 0)
         box1.pack_start(box33b, False, False, 0)
         box1.pack_start(box33c, False, False, 0)
+        box1.pack_start(box33d, False, False, 0)
         box1.pack_start(box33e, False, False, 0)
         box1.pack_start(box33f, False, False, 0)
         box1.pack_start(box33g, False, False, 0)
