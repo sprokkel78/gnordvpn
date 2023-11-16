@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1f303f8e-3fd7-45d6-ac78-b6f4bb0124c4" name="Changes" comment="Updated to version 1.2.10">
+      <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="develop" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/develop" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;sprokkel78&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="a02c849b-99da-43f5-9535-0b846f222fbf" />
+        <option name="url" value="git@github.com:sprokkel78/gnordvpn.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2YB21cLJcFYOPSyA7uykC5ROVpA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "unlink-peer",
+    "last_opened_file_path": "/home/sprokkel/Projects/Python3/gnordvpn"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1f303f8e-3fd7-45d6-ac78-b6f4bb0124c4" name="Changes" comment="" />
+      <created>1699984445256</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699984445256</updated>
+    </task>
+    <task id="LOCAL-00001" summary="First develop commit">
+      <option name="closed" value="true" />
+      <created>1699985117256</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699985117256</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added a help button to the menu.">
+      <option name="closed" value="true" />
+      <created>1699987439468</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699987439468</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix for win.add(box_main)">
+      <option name="closed" value="true" />
+      <created>1699987816567</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699987816567</updated>
+    </task>
+    <task id="LOCAL-00004" summary="made executable">
+      <option name="closed" value="true" />
+      <created>1699988683376</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1699988683376</updated>
+    </task>
+    <task id="LOCAL-00005" summary="fix empty window bug.">
+      <option name="closed" value="true" />
+      <created>1699993222145</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1699993222145</updated>
+    </task>
+    <task id="LOCAL-00006" summary="fixed scrolled window size request">
+      <option name="closed" value="true" />
+      <created>1699993530305</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699993530305</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add github link for pypi readme.">
+      <option name="closed" value="true" />
+      <created>1700060030272</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700060030272</updated>
+    </task>
+    <task id="LOCAL-00008" summary="removed gitignore">
+      <option name="closed" value="true" />
+      <created>1700060641613</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700060641613</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added Meshnet Peer Permissions.">
+      <option name="closed" value="true" />
+      <created>1700083773977</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700083773978</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added picture for Peers in the menu.">
+      <option name="closed" value="true" />
+      <created>1700084151131</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700084151132</updated>
+    </task>
+    <task id="LOCAL-00011" summary="bugfix for the peer permissions.">
+      <option name="closed" value="true" />
+      <created>1700086396125</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700086396125</updated>
+    </task>
+    <task id="LOCAL-00012" summary="removed output prints">
+      <option name="closed" value="true" />
+      <created>1700086786130</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700086786130</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added peer permissions to the menu.">
+      <option name="closed" value="true" />
+      <created>1700087069423</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1700087069423</updated>
+    </task>
+    <task id="LOCAL-00014" summary="small fix for global peer.">
+      <option name="closed" value="true" />
+      <created>1700145503705</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1700145503705</updated>
+    </task>
+    <task id="LOCAL-00015" summary="chenged version to 1.2.10.">
+      <option name="closed" value="true" />
+      <created>1700154349864</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1700154349864</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Fixed a bug in the meshnet view.&#10;&#10;The horizontal box for acception files by ID was not coded in version 1.2.9.&#10;It is now.">
+      <option name="closed" value="true" />
+      <created>1700158654780</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1700158654781</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Updated to version 1.2.10">
+      <option name="closed" value="true" />
+      <created>1700158781467</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1700158781467</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First develop commit" />
+    <MESSAGE value="added a help button to the menu." />
+    <MESSAGE value="fix for win.add(box_main)" />
+    <MESSAGE value="made executable" />
+    <MESSAGE value="fix empty window bug." />
+    <MESSAGE value="fixed scrolled window size request" />
+    <MESSAGE value="add github link for pypi readme." />
+    <MESSAGE value="removed gitignore" />
+    <MESSAGE value="Added Meshnet Peer Permissions." />
+    <MESSAGE value="Added picture for Peers in the menu." />
+    <MESSAGE value="bugfix for the peer permissions." />
+    <MESSAGE value="removed output prints" />
+    <MESSAGE value="added peer permissions to the menu." />
+    <MESSAGE value="small fix for global peer." />
+    <MESSAGE value="chenged version to 1.2.10." />
+    <MESSAGE value="Fixed a bug in the meshnet view.&#10;&#10;The horizontal box for acception files by ID was not coded in version 1.2.9.&#10;It is now." />
+    <MESSAGE value="Updated to version 1.2.10" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to version 1.2.10" />
+  </component>
+</project>
