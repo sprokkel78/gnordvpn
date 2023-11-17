@@ -32,6 +32,9 @@ Pressing CTRL-m will minimize the application.
 
 CHANGELOG
 ---------
+# gnordvpn-sprokkel78 1.2.10
+- The horizontal box for accepting files by ID in meshnet was not coded in version 1.2.9. It is now.
+- added unlink peer to peer permissions view.
 
 # gnordvpn-sprokkel78 1.2.9
 - added a directory check at startup in case the app is started from a wrong path.
