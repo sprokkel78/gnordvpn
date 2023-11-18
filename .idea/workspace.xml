@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f303f8e-3fd7-45d6-ac78-b6f4bb0124c4" name="Changes" comment="Updated to version 1.2.10">
+    <list default="true" id="1f303f8e-3fd7-45d6-ac78-b6f4bb0124c4" name="Changes" comment="update version to 1.3.0 as start of new develop branch.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +74,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "unlink-peer",
+    "git-widget-placeholder": "fix-for-peer-permission-view",
     "last_opened_file_path": "/home/sprokkel/Projects/Python3/gnordvpn"
   }
 }]]></component>
@@ -222,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700158781467</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="update version to 1.3.0 as start of new develop branch.">
+      <option name="closed" value="true" />
+      <created>1700224825300</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1700224825300</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -243,6 +252,7 @@
     <MESSAGE value="chenged version to 1.2.10." />
     <MESSAGE value="Fixed a bug in the meshnet view.&#10;&#10;The horizontal box for acception files by ID was not coded in version 1.2.9.&#10;It is now." />
     <MESSAGE value="Updated to version 1.2.10" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to version 1.2.10" />
+    <MESSAGE value="update version to 1.3.0 as start of new develop branch." />
+    <option name="LAST_COMMIT_MESSAGE" value="update version to 1.3.0 as start of new develop branch." />
   </component>
 </project>

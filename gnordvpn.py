@@ -1142,24 +1142,8 @@ def Button_Peer_Clicked(obj):
 
     if MES == 1:
         #print("Updating Peers")
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer list | grep Hostname",
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
-        out = status.communicate()
-        #print(out)
-        host = out[0].split("\n")
         liststore_peers.clear()
         liststore_peers.append(['Select Peer'])
-        y = 0
-        while y < len(host) - 1:
-            # print("hier " + host[y])
-            hostname = host[y].split(" ")
-            if y != 0:
-                liststore_peers.append([hostname[1]])
-            y = y + 1
         combobox_peers.set_active(0)
     if MES == 0:
         hostname = ""
