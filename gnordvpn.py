@@ -2174,6 +2174,7 @@ class MyApplication(Gtk.Application):
         global combobox6a
         combobox6a.show()
         combobox6a.set_name("cbbox")
+        combobox6a.set_size_request(140, -1)
         combobox6a.pack_start(cell6a, True)
         combobox6a.add_attribute(cell6a, 'text', 0)
         combobox6a.set_model(liststore6a)
