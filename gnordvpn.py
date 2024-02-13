@@ -12,8 +12,8 @@ from threading import Thread
 from time import sleep
 
 
-# VERSION = 1.3.0
-ver = "1.3.0"
+# VERSION = 1.3.1
+ver = "1.3.1"
 
 
 # TODO
