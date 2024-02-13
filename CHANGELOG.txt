@@ -20,11 +20,6 @@ NOTES:
 - Adding Private Network Addresses as a subnet to the allowlist is only possible 
   if LAN DISCOVERY is turned OFF.
 
-BUGS (Should be fixed)
-----
-- First time the app is run it can show an empty window. Quit the app and restart
-  should fix that. 
-  
 CONTROL KEYS
 ------------
 Pressing CTRL-q will quit the application.
@@ -32,6 +27,12 @@ Pressing CTRL-m will minimize the application.
 
 CHANGELOG
 ---------
+
+# gnordvpn-sprokkel78 1.3.0
+- development and testing continues on Ubuntu 23.10 from here on.
+- fix for Peers menu button in case there is no network connection.
+- fix for visual bug in analytics combobox.
+
 # gnordvpn-sprokkel78 1.2.10
 - The horizontal box for accepting files by ID in meshnet was not coded in version 1.2.9. It is now.
 - added unlink peer to peer permissions view.

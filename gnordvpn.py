@@ -12,8 +12,8 @@ from threading import Thread
 from time import sleep
 
 
-# VERSION = 1.2.10
-ver = "1.2.10"
+# VERSION = 1.3.0
+ver = "1.3.0"
 
 
 # TODO
@@ -1142,24 +1142,8 @@ def Button_Peer_Clicked(obj):
 
     if MES == 1:
         #print("Updating Peers")
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer list | grep Hostname",
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
-        out = status.communicate()
-        #print(out)
-        host = out[0].split("\n")
         liststore_peers.clear()
         liststore_peers.append(['Select Peer'])
-        y = 0
-        while y < len(host) - 1:
-            # print("hier " + host[y])
-            hostname = host[y].split(" ")
-            if y != 0:
-                liststore_peers.append([hostname[1]])
-            y = y + 1
         combobox_peers.set_active(0)
     if MES == 0:
         hostname = ""
@@ -2190,6 +2174,7 @@ class MyApplication(Gtk.Application):
         global combobox6a
         combobox6a.show()
         combobox6a.set_name("cbbox")
+        combobox6a.set_size_request(140, -1)
         combobox6a.pack_start(cell6a, True)
         combobox6a.add_attribute(cell6a, 'text', 0)
         combobox6a.set_model(liststore6a)
