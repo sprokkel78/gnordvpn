@@ -1773,7 +1773,8 @@ def Button_Unlink_Peer_Clicked(obj):
 class MyApplication(Gtk.Application):
     def __init__(self):
         x = random.randint(1, 100)
-        super().__init__(application_id="com.sprokkel78-" + str(x) + ".gnordvpn")
+        #super().__init__(application_id="com.sprokkel78-" + str(x) + ".gnordvpn")
+        super().__init__(application_id="com.sprokkel78.gnordvpn")
         GLib.set_application_name("gNordVPN")
 
     def do_activate(self):
@@ -1784,9 +1785,6 @@ class MyApplication(Gtk.Application):
         # CREATE THE MAIN WINDOW
         win.set_title("gNordVPN " + ver)
         win.set_default_size(500, 800)
-        file = "./gnordvpn.svg"
-        if os.path.exists(file):
-            win.set_default_icon_from_file("./gnordvpn.svg")
         win.set_resizable(False)
         win.connect("destroy", Stop_Application)
         win.connect("key-press-event", Key_Event)
