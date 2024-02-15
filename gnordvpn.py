@@ -2706,6 +2706,11 @@ class MyApplication(Gtk.Application):
         cbutton_incoming_traffic.connect("clicked", Cbutton_Traffic_Clicked)
         box55c.pack_start(cbutton_incoming_traffic, False, False, 0)
 
+        label55gc = Gtk.Label()
+        label55gc.show()
+        label55gc.set_size_request(6, -1)
+        box55c.pack_start(label55gc, False, False, 0)
+
         button_remove_nickname = Gtk.Button.new_with_label("Remove Nickname")
         button_remove_nickname.show()
         button_remove_nickname.set_size_request(140, -1)
@@ -2726,6 +2731,11 @@ class MyApplication(Gtk.Application):
         cbutton_routing.show()
         cbutton_routing.connect("clicked", Cbutton_Routing_Clicked)
         box55d.pack_start(cbutton_routing, False, False, 0)
+
+        label55gd = Gtk.Label()
+        label55gd.show()
+        label55gd.set_size_request(6, -1)
+        box55d.pack_start(label55gd, False, False, 0)
 
         button_unlink_peer = Gtk.Button.new_with_label("Unlink Peer")
         button_unlink_peer.show()

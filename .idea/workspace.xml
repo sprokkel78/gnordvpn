@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="added peer nicknames to peer permissions view.">
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for visual bug in show devices list.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
@@ -125,7 +125,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708020695049</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix for visual bug in show devices list.">
+      <option name="closed" value="true" />
+      <created>1708023476741</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708023476741</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -137,6 +145,7 @@
     <MESSAGE value="code cleanup after settings the application id to com.sprokkel78.gnordvpn." />
     <MESSAGE value="added additional info to README.md" />
     <MESSAGE value="added peer nicknames to peer permissions view." />
-    <option name="LAST_COMMIT_MESSAGE" value="added peer nicknames to peer permissions view." />
+    <MESSAGE value="fix for visual bug in show devices list." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix for visual bug in show devices list." />
   </component>
 </project>
