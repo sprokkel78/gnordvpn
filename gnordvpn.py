@@ -844,24 +844,39 @@ def Get_Peer_List():
         statout, staterr = status.communicate()
         statout = statout.strip('\n')
         lstatus = statout.split('\n')
+        nickname_split = ("", " -")
+
         for st in lstatus:
+
             if st != "\r" and st != "-" and st != "/" and st != "\\" and st != "|" and st != "\\n":
                 if st != "":
                     if "Local Peers" in st:
                         txtp = txtp + "\n\n   " + st
                     else:
                         if "Hostname" in st:
-                            txtp = txtp + "\n\n   " + st
+                            if nickname_split[1] != " -" and nickname_split != "":
+                                txtp = txtp + "\n\n  -> " + st + "\n"
+                                nickname_split = ("", " -")
+
+                            else:
+                                txtp = txtp + "\n\n  -> " + st
+
                         else:
                             if "External Peers" in st:
                                 txtp = txtp + "\n\n   " + st
                             else:
                                 if "Nickname:" in st:
-                                    txtp = txtp + "\n\n   " + st + "\n"
+                                    print(st)
+                                    nickname_split = st.split(":")
+                                    if nickname_split[1] != " -" and nickname_split[1] != "":
+                                        txtp = txtp + "\n\n  -> " + st
+                                    else:
+                                        txtp = txtp + "\n\n  -> " + st + "\n"
                                 else:
-                                    #print("no nickname")
-                                    txtp = txtp + "\n   " + st
-
+                                    if "Fileshare" in st:
+                                        txtp = txtp + "\n"
+                                    else:
+                                        txtp = txtp + "\n   " + st
     else:
         txtp = "  Can't update peer list. No Connection."
 
