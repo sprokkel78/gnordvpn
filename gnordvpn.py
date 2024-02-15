@@ -1,5 +1,4 @@
 import ipaddress
-import random
 import subprocess
 import socket
 import sys
@@ -1772,8 +1771,6 @@ def Button_Unlink_Peer_Clicked(obj):
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
     def __init__(self):
-        x = random.randint(1, 100)
-        #super().__init__(application_id="com.sprokkel78-" + str(x) + ".gnordvpn")
         super().__init__(application_id="com.sprokkel78.gnordvpn")
         GLib.set_application_name("gNordVPN")
 
