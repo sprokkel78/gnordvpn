@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="code cleanup after settings the application id to com.sprokkel78.gnordvpn." />
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="added additional info to README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708012147079</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added additional info to README.md">
+      <option name="closed" value="true" />
+      <created>1708012773507</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708012773507</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -116,6 +128,7 @@
     <MESSAGE value="fix for the dock application icon in ubuntu." />
     <MESSAGE value="fix for the dock application icon in ubuntu after system wide installation." />
     <MESSAGE value="code cleanup after settings the application id to com.sprokkel78.gnordvpn." />
-    <option name="LAST_COMMIT_MESSAGE" value="code cleanup after settings the application id to com.sprokkel78.gnordvpn." />
+    <MESSAGE value="added additional info to README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="added additional info to README.md" />
   </component>
 </project>
