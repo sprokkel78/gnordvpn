@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for peer_nickname entry.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
-    </list>
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="update to changelog." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -189,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708035401769</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="update to changelog.">
+      <option name="closed" value="true" />
+      <created>1708037826642</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708037826642</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -208,6 +213,7 @@
     <MESSAGE value="this version is compatible with the nordvpn binary 3.17.2" />
     <MESSAGE value="fix for .desktop icon argument" />
     <MESSAGE value="fix for peer_nickname entry." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix for peer_nickname entry." />
+    <MESSAGE value="update to changelog." />
+    <option name="LAST_COMMIT_MESSAGE" value="update to changelog." />
   </component>
 </project>
