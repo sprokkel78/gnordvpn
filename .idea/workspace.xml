@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for visual bug in show devices list.">
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for visual bug in peer permissions view.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
@@ -133,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708023476741</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fix for visual bug in peer permissions view.">
+      <option name="closed" value="true" />
+      <created>1708025993637</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708025993637</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -146,6 +154,7 @@
     <MESSAGE value="added additional info to README.md" />
     <MESSAGE value="added peer nicknames to peer permissions view." />
     <MESSAGE value="fix for visual bug in show devices list." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix for visual bug in show devices list." />
+    <MESSAGE value="fix for visual bug in peer permissions view." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix for visual bug in peer permissions view." />
   </component>
 </project>

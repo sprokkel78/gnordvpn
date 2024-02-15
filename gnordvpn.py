@@ -866,7 +866,7 @@ def Get_Peer_List():
                                 txtp = txtp + "\n\n   " + st
                             else:
                                 if "Nickname:" in st:
-                                    print(st)
+                                    #print(st)
                                     nickname_split = st.split(":")
                                     if nickname_split[1] != " -" and nickname_split[1] != "":
                                         txtp = txtp + "\n\n  -> " + st
