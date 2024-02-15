@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="update to changelog about the .desktop file.">
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="this version is compatible with the nordvpn binary 3.17.2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnordvpn.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.desktop" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708029680965</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="this version is compatible with the nordvpn binary 3.17.2">
+      <option name="closed" value="true" />
+      <created>1708029864887</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708029864887</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -172,6 +181,7 @@
     <MESSAGE value="fix for visual bug in peer permissions view." />
     <MESSAGE value="removed output prints from Get_Peer_List" />
     <MESSAGE value="update to changelog about the .desktop file." />
-    <option name="LAST_COMMIT_MESSAGE" value="update to changelog about the .desktop file." />
+    <MESSAGE value="this version is compatible with the nordvpn binary 3.17.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="this version is compatible with the nordvpn binary 3.17.2" />
   </component>
 </project>
