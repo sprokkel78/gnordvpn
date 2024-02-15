@@ -1832,8 +1832,7 @@ def Button_Nickname_Peer_Clicked(obj):
             )
         dialog.run()
         dialog.destroy()
-    else:
-        print("failed")
+
 
 def Button_Remove_Nickname_Clicked(obj):
     global peer

@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for .desktop icon argument">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for peer_nickname entry.">
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708033366331</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix for peer_nickname entry.">
+      <option name="closed" value="true" />
+      <created>1708035192315</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708035192315</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -191,6 +198,7 @@
     <MESSAGE value="update to changelog about the .desktop file." />
     <MESSAGE value="this version is compatible with the nordvpn binary 3.17.2" />
     <MESSAGE value="fix for .desktop icon argument" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix for .desktop icon argument" />
+    <MESSAGE value="fix for peer_nickname entry." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix for peer_nickname entry." />
   </component>
 </project>
