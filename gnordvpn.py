@@ -33,6 +33,7 @@ peer_permission_routing = ""
 peer_permission_lan = ""
 peer_permission_sending_files = ""
 peer_nickname = ""
+show_devices = 0
 
 
 # GLOBAL GTK WIDGETS
@@ -887,6 +888,7 @@ def Device_Clicked(obj):
     global MES
     global pause
     global sens
+    global show_devices
 
     if MES == 1:
         if pause == 0:
@@ -896,11 +898,13 @@ def Device_Clicked(obj):
             tbuffer.set_text(txte)
             button_fs_list.set_sensitive(0)
             sens = 0
+            show_devices = 1
         else:
             sleep(3)
             button_device.set_label("Show Devices")
             button_fs_list.set_sensitive(1)
             sens = 1
+            show_devices = 0
     if pause == 1:
         pause = 0
     else:
@@ -1077,6 +1081,18 @@ def Button_Settings_Clicked(obj):
 
     label_settings.set_text("SETTINGS")
 
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
+
 def Button_Mshnet_Clicked(obj):
     box11d.show()
     box22a.hide()
@@ -1114,6 +1130,18 @@ def Button_Mshnet_Clicked(obj):
 
 
     label_settings.set_text("MESHNET")
+
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
 
 
 def Button_Allowlist_Clicked(obj):
@@ -1153,6 +1181,19 @@ def Button_Allowlist_Clicked(obj):
 
 
     label_settings.set_text("ALLOWLIST")
+
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
+
 
 def Button_Peer_Clicked(obj):
     global MES
@@ -1213,6 +1254,18 @@ def Button_Peer_Clicked(obj):
     box55g.show()
 
     label_settings.set_text("PEER PERMISSIONS")
+
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
 
 
 def Choose_File(obj):
@@ -1813,27 +1866,40 @@ def Button_Unlink_Peer_Clicked(obj):
 def Button_Nickname_Peer_Clicked(obj):
     global peer
     global peer_nickname
+    global MES
     peer_nickname = entry_nickname.get_text()
-    if peer_nickname != "" and "-" not in peer_nickname and "_" not in peer_nickname\
-            and " " not in peer_nickname and ";" not in peer_nickname:
-        #print("update nickname")
-        status = subprocess.Popen(
-            "/usr/bin/nordvpn meshnet peer nickname set " + peer + " " + peer_nickname,
-            shell=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE, universal_newlines=True)
-        rcstat = status.wait()
+
+    if MES == "1":
+        if peer_nickname != "" and "-" not in peer_nickname and "_" not in peer_nickname\
+                and " " not in peer_nickname and ";" not in peer_nickname:
+            #print("update nickname")
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer nickname set " + peer + " " + peer_nickname,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
+            dialog = Gtk.MessageDialog(
+                title="gNordVPN",
+                parent=win,
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text="Peer nickname has been updated."
+                )
+            dialog.run()
+            dialog.destroy()
+    else:
         dialog = Gtk.MessageDialog(
             title="gNordVPN",
             parent=win,
             flags=0,
             message_type=Gtk.MessageType.INFO,
             buttons=Gtk.ButtonsType.OK,
-            text="Peer nickname has been updated."
-            )
+            text="You must enable meshnet to update nicknames."
+        )
         dialog.run()
         dialog.destroy()
-
 
 def Button_Remove_Nickname_Clicked(obj):
     global peer
@@ -2732,17 +2798,6 @@ class MyApplication(Gtk.Application):
         cbutton_routing.connect("clicked", Cbutton_Routing_Clicked)
         box55d.pack_start(cbutton_routing, False, False, 0)
 
-        label55gd = Gtk.Label()
-        label55gd.show()
-        label55gd.set_size_request(6, -1)
-        box55d.pack_start(label55gd, False, False, 0)
-
-        button_unlink_peer = Gtk.Button.new_with_label("Unlink Peer")
-        button_unlink_peer.show()
-        button_unlink_peer.set_size_request(140, -1)
-        button_unlink_peer.connect("clicked", Button_Unlink_Peer_Clicked)
-        box55d.pack_start(button_unlink_peer, False, False, 0)
-
         label55c = Gtk.Label()
         label55c.show()
         label55c.set_size_request(15, -1)
@@ -2773,6 +2828,16 @@ class MyApplication(Gtk.Application):
         cbutton_sending_files.connect("clicked", Cbutton_Sendf_Clicked)
         box55f.pack_start(cbutton_sending_files, False, False, 0)
 
+        label55gd = Gtk.Label()
+        label55gd.show()
+        label55gd.set_size_request(6, -1)
+        box55f.pack_start(label55gd, False, False, 0)
+
+        button_unlink_peer = Gtk.Button.new_with_label("Unlink Peer")
+        button_unlink_peer.show()
+        button_unlink_peer.set_size_request(140, -1)
+        button_unlink_peer.connect("clicked", Button_Unlink_Peer_Clicked)
+        box55f.pack_start(button_unlink_peer, False, False, 0)
 
         # FOOTER: ADD A STATUSBAR WITH NORDVPN VERSION
         sb = Gtk.Statusbar()
