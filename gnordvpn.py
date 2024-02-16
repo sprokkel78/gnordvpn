@@ -1814,7 +1814,8 @@ def Button_Nickname_Peer_Clicked(obj):
     global peer
     global peer_nickname
     peer_nickname = entry_nickname.get_text()
-    if peer_nickname != "" and "-" not in peer_nickname and "_" not in peer_nickname and " " not in peer_nickname:
+    if peer_nickname != "" and "-" not in peer_nickname and "_" not in peer_nickname and " " not in peer_nickname\
+            and ";" not in peer_nickname:
         #print("update nickname")
         status = subprocess.Popen(
             "/usr/bin/nordvpn meshnet peer nickname set " + peer + " " + peer_nickname,
