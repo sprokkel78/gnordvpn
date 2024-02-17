@@ -1973,7 +1973,7 @@ class MyApplication(Gtk.Application):
         # MAIN USER INTERFACE CODE
         # CREATE THE MAIN WINDOW
         win.set_title("gNordVPN " + ver)
-        win.set_default_size(500, 800)
+        win.set_default_size(500, 830)
         win.set_resizable(False)
         win.connect("destroy", Stop_Application)
         win.connect("key-press-event", Key_Event)
