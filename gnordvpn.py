@@ -2762,10 +2762,10 @@ class MyApplication(Gtk.Application):
         global cbutton_sending_files
 
         box55aa.set_size_request(-1, 15)
-        #box55a.set_size_request(-1, 25)
-        #box55b.set_size_request(-1, 25)
-        #box55c.set_size_request(-1, 25)
-        #box55d.set_size_request(-1, 25)
+        box55a.set_size_request(-1, 34)
+        box55b.set_size_request(-1, 34)
+        box55c.set_size_request(-1, 34)
+        box55d.set_size_request(-1, 34)
         box55e.set_size_request(-1, 34)
         box55f.set_size_request(-1, 34)
         #box55g.set_size_request(-1, 25)
