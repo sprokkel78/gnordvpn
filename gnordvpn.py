@@ -2891,14 +2891,14 @@ class MyApplication(Gtk.Application):
 
         label55gd = Gtk.Label()
         label55gd.show()
-        label55gd.set_size_request(6, -1)
-        box55f.pack_start(label55gd, False, False, 0)
+        label55gd.set_size_request(10, -1)
+        box55g.pack_start(label55gd, False, False, 0)
 
         button_unlink_peer = Gtk.Button.new_with_label("Unlink Peer")
         button_unlink_peer.show()
         button_unlink_peer.set_size_request(140, -1)
         button_unlink_peer.connect("clicked", Button_Unlink_Peer_Clicked)
-        box55f.pack_start(button_unlink_peer, False, False, 0)
+        box55g.pack_start(button_unlink_peer, False, False, 0)
 
         # FOOTER: ADD A STATUSBAR WITH NORDVPN VERSION
         sb = Gtk.Statusbar()
