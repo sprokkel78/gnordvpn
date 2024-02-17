@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="moved the unlink peer button to the bottom in peer permissions view.">
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="window size height had to be adjusted by 30 pix.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
@@ -293,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708183871796</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="window size height had to be adjusted by 30 pix.">
+      <option name="closed" value="true" />
+      <created>1708184939079</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1708184939079</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -320,6 +328,7 @@
     <MESSAGE value="ratings box now correctly hides and shows when moving through the app." />
     <MESSAGE value="fix for visual bug in peer permission view." />
     <MESSAGE value="moved the unlink peer button to the bottom in peer permissions view." />
-    <option name="LAST_COMMIT_MESSAGE" value="moved the unlink peer button to the bottom in peer permissions view." />
+    <MESSAGE value="window size height had to be adjusted by 30 pix." />
+    <option name="LAST_COMMIT_MESSAGE" value="window size height had to be adjusted by 30 pix." />
   </component>
 </project>

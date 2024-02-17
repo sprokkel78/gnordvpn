@@ -1882,7 +1882,7 @@ def Button_Nickname_Peer_Clicked(obj):
     global MES
     peer_nickname = entry_nickname.get_text()
 
-    if MES == "1":
+    if MES == 1:
         if peer_nickname != "" and "-" not in peer_nickname and "_" not in peer_nickname\
                 and " " not in peer_nickname and ";" not in peer_nickname:
             #print("update nickname")
