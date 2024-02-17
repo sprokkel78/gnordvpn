@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for show devices output after changing to another menu item.">
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="update to changelog.">
+      <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,7 +236,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708094145820</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="update to changelog.">
+      <option name="closed" value="true" />
+      <created>1708171698678</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1708171698678</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -255,9 +263,9 @@
     <MESSAGE value="this version is compatible with the nordvpn binary 3.17.2" />
     <MESSAGE value="fix for .desktop icon argument" />
     <MESSAGE value="fix for peer_nickname entry." />
-    <MESSAGE value="update to changelog." />
     <MESSAGE value="fix for peer nickname entry box." />
     <MESSAGE value="fix for show devices output after changing to another menu item." />
-    <option name="LAST_COMMIT_MESSAGE" value="fix for show devices output after changing to another menu item." />
+    <MESSAGE value="update to changelog." />
+    <option name="LAST_COMMIT_MESSAGE" value="update to changelog." />
   </component>
 </project>

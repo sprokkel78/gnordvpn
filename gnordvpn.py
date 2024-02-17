@@ -905,6 +905,9 @@ def Device_Clicked(obj):
             button_fs_list.set_sensitive(1)
             sens = 1
             show_devices = 0
+    else:
+        show_devices = 0
+
     if pause == 1:
         pause = 0
     else:
