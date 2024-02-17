@@ -740,6 +740,11 @@ def MES_Changed(obj):
         entry_route.set_sensitive(0)
         button_route.set_sensitive(0)
 
+        global show_devices
+        show_devices = 0
+        global pause
+        pause = 0
+
         status = subprocess.Popen("/usr/bin/nordvpn set meshnet off", shell=True,
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         rcstat = status.wait()
@@ -905,8 +910,6 @@ def Device_Clicked(obj):
             button_fs_list.set_sensitive(1)
             sens = 1
             show_devices = 0
-    else:
-        show_devices = 0
 
     if pause == 1:
         pause = 0

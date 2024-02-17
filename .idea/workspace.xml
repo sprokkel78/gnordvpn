@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="update to changelog.">
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for show_devices">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -244,7 +245,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708171698678</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fix for show_devices">
+      <option name="closed" value="true" />
+      <created>1708172004503</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1708172004503</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -266,6 +275,7 @@
     <MESSAGE value="fix for peer nickname entry box." />
     <MESSAGE value="fix for show devices output after changing to another menu item." />
     <MESSAGE value="update to changelog." />
-    <option name="LAST_COMMIT_MESSAGE" value="update to changelog." />
+    <MESSAGE value="fix for show_devices" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix for show_devices" />
   </component>
 </project>
