@@ -85,6 +85,7 @@ cbutton_routing = Gtk.CheckButton()
 cbutton_lan = Gtk.CheckButton()
 cbutton_sending_files = Gtk.CheckButton()
 entry_nickname = Gtk.Entry()
+entry_ratings = Gtk.Entry()
 
 # CREATE SOME SEPARATORS
 sep1 = Gtk.Separator()
@@ -148,6 +149,8 @@ box22g = Gtk.Box(spacing=6)
 box22g.show()
 box22h = Gtk.Box(spacing=6)
 box22h.show()
+box22i = Gtk.Box(spacing=6)
+box22i.show()
 
 # MESHNET
 box33a = Gtk.Box(spacing=6)
@@ -1932,6 +1935,27 @@ def Button_Remove_Nickname_Clicked(obj):
         dialog.destroy()
 
 
+def Send_Rating(obj):
+    rating = entry_ratings.get_text()
+    if rating == "1" or rating =="2" or rating == "3" or rating == "4" or rating == "5":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn rate " + rating,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+        dialog = Gtk.MessageDialog(
+            title="gNordVPN",
+            parent=win,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text="Thank you for your feedback."
+        )
+        dialog.run()
+        dialog.destroy()
+    entry_ratings.set_text("")
+
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
     def __init__(self):
@@ -1984,6 +2008,7 @@ class MyApplication(Gtk.Application):
         box1.pack_start(box22f, False, False, 0)
         box1.pack_start(box22g, False, False, 0)
         box1.pack_start(box22h, False, False, 0)
+        box1.pack_start(box22i, False, False, 0)
 
         # MESHNET
         box1.pack_start(box33a, False, False, 0)
@@ -2461,6 +2486,32 @@ class MyApplication(Gtk.Application):
         button_dns.show()
         button_dns.connect("clicked", Activate_DNS)
         box22h.pack_start(button_dns, False, False, 0)
+
+        # HIER VERDER
+
+        label_rt_start = Gtk.Label()
+        label_rt_start.show()
+        label_rt_start.set_size_request(15, -1)
+        box22i.pack_start(label_rt_start, False, False, 0
+                          )
+        label_ratings = Gtk.Label()
+        label_ratings.set_text("Rate Connection")
+        label_ratings.set_xalign(0.0)
+        label_ratings.set_size_request(140, -1)
+        label_ratings.show()
+        box22i.pack_start(label_ratings, False, False, 0)
+
+        global entry_ratings
+        entry_ratings.show()
+        entry_ratings.set_width_chars(1)
+        entry_ratings.connect("activate", Send_Rating)
+        box22i.pack_start(entry_ratings, False, False, 0)
+
+        label_rt_nr = Gtk.Label()
+        label_rt_nr.set_text(" > 1 (slow) > 3 (medium) > 5 (fast)")
+        label_rt_nr.show()
+        label_rt_nr.set_size_request(100, -1)
+        box22i.pack_start(label_rt_nr, False, False, 0)
 
         # MESHNET MODULE BUTTON
         label_mes_start = Gtk.Label()

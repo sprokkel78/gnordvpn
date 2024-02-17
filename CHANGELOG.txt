@@ -38,6 +38,7 @@ CHANGELOG
 - added peer nicknames to peer permissions view.
 - fix for show devices output after changing to another menu item.
 - fix for show_devices output when the meshnet module is disabled.
+- added connection ratings to the setting view.
 
 # gnordvpn-sprokkel78 1.3.0
 - development and testing continues on Ubuntu 23.10 from here on.
