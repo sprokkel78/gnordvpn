@@ -36,6 +36,7 @@ CHANGELOG
   from a previous version.
 - code cleanup after setting the application id to com.sprokkel78.gnordvpn.
 - added peer nicknames to peer permissions view.
+- fix for show devices output after changing to another menu item.
 
 # gnordvpn-sprokkel78 1.3.0
 - development and testing continues on Ubuntu 23.10 from here on.
