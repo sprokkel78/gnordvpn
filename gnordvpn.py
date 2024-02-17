@@ -1063,6 +1063,7 @@ def Button_Settings_Clicked(obj):
     box22f.show()
     box22g.show()
     box22h.show()
+    box22i.show()
 
     box33a.hide()
     box33b.hide()
@@ -1112,6 +1113,7 @@ def Button_Mshnet_Clicked(obj):
     box22f.hide()
     box22g.hide()
     box22h.hide()
+    box22i.hide()
 
     box33a.show()
     box33b.show()
@@ -1163,6 +1165,7 @@ def Button_Allowlist_Clicked(obj):
     box22f.hide()
     box22g.hide()
     box22h.hide()
+    box22i.hide()
 
     box33a.hide()
     box33b.hide()
@@ -1237,6 +1240,7 @@ def Button_Peer_Clicked(obj):
     box22f.hide()
     box22g.hide()
     box22h.hide()
+    box22i.hide()
 
     box33a.show()
     box33b.hide()
