@@ -1584,14 +1584,10 @@ def Peers_Changed(obj):
     item = ""
     peer = ""
 
-    #print("ok")
-    #print("changed")
     active_index = combobox_peers.get_active()
     if active_index != -1:
-        #print("ok")
         item = combobox_peers.get_model()[combobox_peers.get_active()]
         if item[0] != "Select Peer":
-            #print("ok")
             #print(item[0])
             peer = item[0]
             status = subprocess.Popen(
@@ -1629,10 +1625,7 @@ def Peers_Changed(obj):
                             else:
                                 peer_nickname = ""
                 y = y + 1
-            #print("1 " + peer_permission_incoming_traffic)
-            #print("2 " + peer_permission_routing)
-            #print("3 " + peer_permission_lan)
-            #print("4 " + peer_permission_sending_files)
+
 
             if "enabled" in peer_permission_incoming_traffic:
                 cbutton_incoming_traffic.set_active(1)
@@ -1654,7 +1647,6 @@ def Peers_Changed(obj):
             entry_nickname.set_text(peer_nickname)
 
         else:
-            #print("leeg")
             peer_permission_incoming_traffic = ""
             peer_permission_routing = ""
             peer_permission_lan = ""
@@ -1719,7 +1711,6 @@ def Button_Update_Peers_Clicked(obj):
 
 
 def Cbutton_Traffic_Clicked(obj):
-    #print("1")
     global peer
     if peer != "":
         if cbutton_incoming_traffic.get_active() == 1:
@@ -1738,7 +1729,6 @@ def Cbutton_Traffic_Clicked(obj):
             rcstat = status.wait()
 
 def Cbutton_Routing_Clicked(obj):
-    # print("2")
     global peer
     if peer != "":
         if cbutton_routing.get_active() == 1:
@@ -1757,7 +1747,6 @@ def Cbutton_Routing_Clicked(obj):
             rcstat = status.wait()
 
 def Cbutton_Lan_Clicked(obj):
-    # print("3")
     global peer
     if peer != "":
         if cbutton_lan.get_active() == 1:
@@ -1776,7 +1765,6 @@ def Cbutton_Lan_Clicked(obj):
             rcstat = status.wait()
 
 def Cbutton_Sendf_Clicked(obj):
-    #print("4")
     global peer
     if peer != "":
         if cbutton_sending_files.get_active() == 1:
@@ -1959,6 +1947,7 @@ def Send_Rating(obj):
         dialog.run()
         dialog.destroy()
     entry_ratings.set_text("")
+
 
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
@@ -2926,6 +2915,7 @@ thread.start()
 thread1 = Thread(target=Get_Incoming_Files)
 thread1.daemon = True
 thread1.start()
+
 
 sleep(1)
 
