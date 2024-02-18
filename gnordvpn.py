@@ -198,20 +198,24 @@ status = subprocess.Popen("ps ax | grep \"python3 ./gnordvpn.py\" | grep -v \"gr
                           stderr=subprocess.PIPE, universal_newlines=True)
 rcstat = status.wait()
 out = status.communicate()
+test = out[0].split("\n")
 
-if "gnordvpn.py" in out[0]:
-    print("gNordVPN is already running. (EXIT)\n" + out[0])
-    dialog = Gtk.MessageDialog(
-        title="gNordVPN",
-        parent=None,
-        flags=0,
-        message_type=Gtk.MessageType.INFO,
-        buttons=Gtk.ButtonsType.OK,
-        text="gNordVPN is already running.\n\n  PID: " + out[0]
-    )
-    dialog.run()
-    dialog.destroy()
-    sys.exit(0)
+if len(test) > 1:
+    if "gnordvpn.py" in test[1]:
+        print("gNordVPN is already running. (EXIT)\n" + test[0])
+        dialog = Gtk.MessageDialog(
+            title="gNordVPN",
+            parent=None,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text="gNordVPN is already running.\n\n  PID: " + test[0]
+        )
+        dialog.run()
+        dialog.destroy()
+        sys.exit(0)
+
+
 # CHECK IF WE'RE IN THE RIGHT DIRECTORY
 file = "./gnordvpn.css"
 if os.path.exists(file):
