@@ -2920,6 +2920,9 @@ thread1.start()
 sleep(1)
 
 # START THE APPLICATION
-app = MyApplication()
-exit_status = app.run(sys.argv)
-sys.exit(exit_status)
+def main():
+    app = MyApplication()
+    app.run(None)
+
+if __name__ == "__main__":
+    main()
