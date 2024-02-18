@@ -5,8 +5,10 @@
 #
 # It will create a startup shell script named gnordvpn in /usr/bin,
 # the app will be placed in /usr/share/gnordvpn-sprokkel78
-# The .desktop file will be placed in /usr/share/applications/
-#
+# The .desktop file will be placed in /usr/share/applications/ as com.sprokkel78.gnordvpn.desktop
+# The icons will be copied to /usr/share/icons/hicolor/scalable/apps/
+# and /usr/share/icons/hicolor/48x48/apps/
+
 mkdir -p /usr/share/gnordvpn-sprokkel78
 cp -r ./* /usr/share/gnordvpn-sprokkel78/
 cp ./gnordvpn.svg /usr/share/icons/hicolor/scalable/apps/
