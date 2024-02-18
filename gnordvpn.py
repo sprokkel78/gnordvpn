@@ -190,6 +190,28 @@ box99c = Gtk.Box(spacing=6)
 box99c.show()
 
 # STARTUP CHECKS
+# CHECK IF GNORDVPN.PY IS ALREADY RUNNING
+print("Check if gNordVPN is already running. please wait.")
+
+status = subprocess.Popen("ps ax | grep \"python3 ./gnordvpn.py\" | grep -v \"grep\"",\
+                          shell=True, stdout=subprocess.PIPE,\
+                          stderr=subprocess.PIPE, universal_newlines=True)
+rcstat = status.wait()
+out = status.communicate()
+
+if "gnordvpn.py" in out[0]:
+    print("gNordVPN is already running. (EXIT)\n" + out[0])
+    dialog = Gtk.MessageDialog(
+        title="gNordVPN",
+        parent=None,
+        flags=0,
+        message_type=Gtk.MessageType.INFO,
+        buttons=Gtk.ButtonsType.OK,
+        text="gNordVPN is already running.\n\n  PID: " + out[0]
+    )
+    dialog.run()
+    dialog.destroy()
+    sys.exit(0)
 # CHECK IF WE'RE IN THE RIGHT DIRECTORY
 file = "./gnordvpn.css"
 if os.path.exists(file):

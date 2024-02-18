@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="code cleanup">
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="changed app startup code.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -381,12 +382,19 @@
       <option name="project" value="LOCAL" />
       <updated>1708265470112</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="changed app startup code.">
+      <option name="closed" value="true" />
+      <created>1708266278182</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1708266278182</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="code cleanup after settings the application id to com.sprokkel78.gnordvpn." />
     <MESSAGE value="added additional info to README.md" />
     <MESSAGE value="added peer nicknames to peer permissions view." />
     <MESSAGE value="fix for visual bug in show devices list." />
@@ -411,6 +419,7 @@
     <MESSAGE value="update to gnordvpn.desktop" />
     <MESSAGE value="update to install.sh" />
     <MESSAGE value="code cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="code cleanup" />
+    <MESSAGE value="changed app startup code." />
+    <option name="LAST_COMMIT_MESSAGE" value="changed app startup code." />
   </component>
 </project>
