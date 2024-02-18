@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for set peer nickname button">
-      <change afterPath="$PROJECT_DIR$/.README.md.swp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gnordvpn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gnordvpn.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="update to README.md">
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnordvpn.desktop" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.desktop" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,7 +310,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708187306697</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="update to README.md">
+      <option name="closed" value="true" />
+      <created>1708264429776</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1708264429776</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -340,6 +347,7 @@
     <MESSAGE value="moved the unlink peer button to the bottom in peer permissions view." />
     <MESSAGE value="window size height had to be adjusted by 30 pix." />
     <MESSAGE value="fix for set peer nickname button" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix for set peer nickname button" />
+    <MESSAGE value="update to README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update to README.md" />
   </component>
 </project>
