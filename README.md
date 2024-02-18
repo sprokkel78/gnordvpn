@@ -29,4 +29,6 @@ Added 'uninstall.sh' script for system-wide uninstallation.
   
 Check https://www.github.com/sprokkel78/gnordvpn for contributing, development features and pre-releases.
 
+Check https://pypi.org/project/gnordvpn-sprokkel78/ for the full python package.
+
 Funding: Paypal email: sprokkel78.bart@gmail.com

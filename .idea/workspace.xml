@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="window size height had to be adjusted by 30 pix.">
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="fix for set peer nickname button">
+      <change afterPath="$PROJECT_DIR$/.README.md.swp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gnordvpn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gnordvpn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +43,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "develop",
-    "last_opened_file_path": "/home/sprokkel/Projects/Python/gnordvpn"
+    "last_opened_file_path": "/home/sprokkel/Projects/Python/gnordvpn",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="SharedIndexes">
@@ -301,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708184939079</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fix for set peer nickname button">
+      <option name="closed" value="true" />
+      <created>1708187306697</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1708187306697</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -329,6 +339,7 @@
     <MESSAGE value="fix for visual bug in peer permission view." />
     <MESSAGE value="moved the unlink peer button to the bottom in peer permissions view." />
     <MESSAGE value="window size height had to be adjusted by 30 pix." />
-    <option name="LAST_COMMIT_MESSAGE" value="window size height had to be adjusted by 30 pix." />
+    <MESSAGE value="fix for set peer nickname button" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix for set peer nickname button" />
   </component>
 </project>
