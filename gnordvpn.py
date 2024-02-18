@@ -209,7 +209,7 @@ if len(test) > 1:
             flags=0,
             message_type=Gtk.MessageType.INFO,
             buttons=Gtk.ButtonsType.OK,
-            text="gNordVPN is already running.\n\n  PID: " + test[0]
+            text="gNordVPN is already running.\n\nPID: " + test[0]
         )
         dialog.run()
         dialog.destroy()
