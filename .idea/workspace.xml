@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="added another startup check to see if gnordvpn is already running. (2)">
-      <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
+    <list default="true" id="08962e01-f6c7-4b11-b448-42f136bf8dc8" name="Changes" comment="added another startup check to see if gnordvpn is already running. (3)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -405,12 +406,19 @@
       <option name="project" value="LOCAL" />
       <updated>1708276732477</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="added another startup check to see if gnordvpn is already running. (3)">
+      <option name="closed" value="true" />
+      <created>1708276975947</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1708276975947</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix for visual bug in show devices list." />
     <MESSAGE value="fix for visual bug in peer permissions view." />
     <MESSAGE value="removed output prints from Get_Peer_List" />
     <MESSAGE value="update to changelog about the .desktop file." />
@@ -435,6 +443,7 @@
     <MESSAGE value="changed app startup code." />
     <MESSAGE value="added another startup check to see if gnordvpn is already running." />
     <MESSAGE value="added another startup check to see if gnordvpn is already running. (2)" />
-    <option name="LAST_COMMIT_MESSAGE" value="added another startup check to see if gnordvpn is already running. (2)" />
+    <MESSAGE value="added another startup check to see if gnordvpn is already running. (3)" />
+    <option name="LAST_COMMIT_MESSAGE" value="added another startup check to see if gnordvpn is already running. (3)" />
   </component>
 </project>
