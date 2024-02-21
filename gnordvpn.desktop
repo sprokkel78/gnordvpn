@@ -3,5 +3,5 @@ Name=gNordVPN
 Exec=/usr/bin/gnordvpn
 Comment=NordVPN GUI Client
 Terminal=false
-Icon=/usr/share/icons/hicolor/scalable/apps/gnordvpn.svg
+Icon=/usr/share/gnordvpn-sprokkel78/gnordvpn.svg
 Type=Application
