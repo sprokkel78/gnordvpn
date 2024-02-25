@@ -8,4 +8,6 @@
 
 rm -rf /usr/share/gnordvpn-sprokkel78
 rm /usr/bin/gnordvpn
-rm /usr/share/applications/gnordvpn.desktop
+rm /usr/share/applications/com.sprokkel78.gnordvpn.desktop
+rm /usr/share/icons/hicolor/scalable/apps/gnordvpn.svg
+rm /usr/share/icons/hicolor/48x48/apps/gnordvpn.png

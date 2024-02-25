@@ -1,5 +1,4 @@
 import ipaddress
-import random
 import subprocess
 import socket
 import sys
@@ -12,8 +11,8 @@ from threading import Thread
 from time import sleep
 
 
-# VERSION = 1.3.0
-ver = "1.3.0"
+# VERSION = 1.3.1
+ver = "1.3.1"
 
 
 # TODO
@@ -33,6 +32,8 @@ peer_permission_incoming_traffic = ""
 peer_permission_routing = ""
 peer_permission_lan = ""
 peer_permission_sending_files = ""
+peer_nickname = ""
+show_devices = 0
 
 
 # GLOBAL GTK WIDGETS
@@ -83,6 +84,8 @@ cbutton_incoming_traffic = Gtk.CheckButton()
 cbutton_routing = Gtk.CheckButton()
 cbutton_lan = Gtk.CheckButton()
 cbutton_sending_files = Gtk.CheckButton()
+entry_nickname = Gtk.Entry()
+entry_ratings = Gtk.Entry()
 
 # CREATE SOME SEPARATORS
 sep1 = Gtk.Separator()
@@ -146,6 +149,8 @@ box22g = Gtk.Box(spacing=6)
 box22g.show()
 box22h = Gtk.Box(spacing=6)
 box22h.show()
+box22i = Gtk.Box(spacing=6)
+box22i.show()
 
 # MESHNET
 box33a = Gtk.Box(spacing=6)
@@ -172,6 +177,7 @@ box55c = Gtk.Box(spacing=6)
 box55d = Gtk.Box(spacing=6)
 box55e = Gtk.Box(spacing=6)
 box55f = Gtk.Box(spacing=6)
+box55g = Gtk.Box(spacing=6)
 
 # FOOTER
 box99a = Gtk.Box(spacing=6)
@@ -184,6 +190,32 @@ box99c = Gtk.Box(spacing=6)
 box99c.show()
 
 # STARTUP CHECKS
+# CHECK IF GNORDVPN.PY IS ALREADY RUNNING
+print("Check if gNordVPN is already running. please wait.")
+
+status = subprocess.Popen("ps ax | grep \"python3 ./gnordvpn.py\" | grep -v \"grep\"",\
+                          shell=True, stdout=subprocess.PIPE,\
+                          stderr=subprocess.PIPE, universal_newlines=True)
+rcstat = status.wait()
+out = status.communicate()
+test = out[0].split("\n")
+
+if len(test) > 1:
+    if "gnordvpn.py" in test[1]:
+        print("gNordVPN is already running. (EXIT)\n" + test[0])
+        dialog = Gtk.MessageDialog(
+            title="gNordVPN",
+            parent=None,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text="gNordVPN is already running.\n\nPID: " + test[0]
+        )
+        dialog.run()
+        dialog.destroy()
+        sys.exit(0)
+
+
 # CHECK IF WE'RE IN THE RIGHT DIRECTORY
 file = "./gnordvpn.css"
 if os.path.exists(file):
@@ -737,6 +769,11 @@ def MES_Changed(obj):
         entry_route.set_sensitive(0)
         button_route.set_sensitive(0)
 
+        global show_devices
+        show_devices = 0
+        global pause
+        pause = 0
+
         status = subprocess.Popen("/usr/bin/nordvpn set meshnet off", shell=True,
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         rcstat = status.wait()
@@ -842,19 +879,39 @@ def Get_Peer_List():
         statout, staterr = status.communicate()
         statout = statout.strip('\n')
         lstatus = statout.split('\n')
+        nickname_split = ("", " -")
+
         for st in lstatus:
+
             if st != "\r" and st != "-" and st != "/" and st != "\\" and st != "|" and st != "\\n":
                 if st != "":
                     if "Local Peers" in st:
                         txtp = txtp + "\n\n   " + st
                     else:
                         if "Hostname" in st:
-                            txtp = txtp + "\n\n   " + st
+                            if nickname_split[1] != " -" and nickname_split != "":
+                                txtp = txtp + "\n\n  -> " + st + "\n"
+                                nickname_split = ("", " -")
+
+                            else:
+                                txtp = txtp + "\n\n  -> " + st
+
                         else:
                             if "External Peers" in st:
                                 txtp = txtp + "\n\n   " + st
                             else:
-                                txtp = txtp + "\n   " + st
+                                if "Nickname:" in st:
+                                    #print(st)
+                                    nickname_split = st.split(":")
+                                    if nickname_split[1] != " -" and nickname_split[1] != "":
+                                        txtp = txtp + "\n\n  -> " + st
+                                    else:
+                                        txtp = txtp + "\n\n  -> " + st + "\n"
+                                else:
+                                    if "Fileshare" in st:
+                                        txtp = txtp + "\n"
+                                    else:
+                                        txtp = txtp + "\n   " + st
     else:
         txtp = "  Can't update peer list. No Connection."
 
@@ -865,6 +922,7 @@ def Device_Clicked(obj):
     global MES
     global pause
     global sens
+    global show_devices
 
     if MES == 1:
         if pause == 0:
@@ -874,11 +932,14 @@ def Device_Clicked(obj):
             tbuffer.set_text(txte)
             button_fs_list.set_sensitive(0)
             sens = 0
+            show_devices = 1
         else:
             sleep(3)
             button_device.set_label("Show Devices")
             button_fs_list.set_sensitive(1)
             sens = 1
+            show_devices = 0
+
     if pause == 1:
         pause = 0
     else:
@@ -1028,6 +1089,7 @@ def Button_Settings_Clicked(obj):
     box22f.show()
     box22g.show()
     box22h.show()
+    box22i.show()
 
     box33a.hide()
     box33b.hide()
@@ -1051,8 +1113,21 @@ def Button_Settings_Clicked(obj):
     box55d.hide()
     box55e.hide()
     box55f.hide()
+    box55g.hide()
 
     label_settings.set_text("SETTINGS")
+
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
 
 def Button_Mshnet_Clicked(obj):
     box11d.show()
@@ -1064,6 +1139,7 @@ def Button_Mshnet_Clicked(obj):
     box22f.hide()
     box22g.hide()
     box22h.hide()
+    box22i.hide()
 
     box33a.show()
     box33b.show()
@@ -1087,8 +1163,22 @@ def Button_Mshnet_Clicked(obj):
     box55d.hide()
     box55e.hide()
     box55f.hide()
+    box55g.hide()
+
 
     label_settings.set_text("MESHNET")
+
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
 
 
 def Button_Allowlist_Clicked(obj):
@@ -1101,6 +1191,7 @@ def Button_Allowlist_Clicked(obj):
     box22f.hide()
     box22g.hide()
     box22h.hide()
+    box22i.hide()
 
     box33a.hide()
     box33b.hide()
@@ -1124,8 +1215,23 @@ def Button_Allowlist_Clicked(obj):
     box55d.hide()
     box55e.hide()
     box55f.hide()
+    box55g.hide()
+
 
     label_settings.set_text("ALLOWLIST")
+
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
+
 
 def Button_Peer_Clicked(obj):
     global MES
@@ -1160,6 +1266,7 @@ def Button_Peer_Clicked(obj):
     box22f.hide()
     box22g.hide()
     box22h.hide()
+    box22i.hide()
 
     box33a.show()
     box33b.hide()
@@ -1183,8 +1290,21 @@ def Button_Peer_Clicked(obj):
     box55d.show()
     box55e.show()
     box55f.show()
+    box55g.show()
 
     label_settings.set_text("PEER PERMISSIONS")
+
+    global show_devices
+    global sens
+    global pause
+
+    if show_devices == 1:
+        sleep(3)
+        button_device.set_label("Show Devices")
+        button_fs_list.set_sensitive(1)
+        sens = 1
+        show_devices = 0
+        pause = 0
 
 
 def Choose_File(obj):
@@ -1485,18 +1605,15 @@ def Peers_Changed(obj):
     global peer_permission_routing
     global peer_permission_lan
     global peer_permission_sending_files
+    global peer_nickname
 
     item = ""
     peer = ""
 
-    #print("ok")
-    #print("changed")
     active_index = combobox_peers.get_active()
     if active_index != -1:
-        #print("ok")
         item = combobox_peers.get_model()[combobox_peers.get_active()]
         if item[0] != "Select Peer":
-            #print("ok")
             #print(item[0])
             peer = item[0]
             status = subprocess.Popen(
@@ -1506,7 +1623,6 @@ def Peers_Changed(obj):
                 stderr=subprocess.PIPE, universal_newlines=True)
             rcstat = status.wait()
             out = status.communicate()
-            #print(out[0])
             host = out[0].split("\n")
             y = 0
             x = 0
@@ -1517,6 +1633,8 @@ def Peers_Changed(obj):
                     if host[y] == "":
                         x = 0
                     else:
+                        z = y - 1
+                        #print(host[z])
                         if "Allow Incoming Traffic:" in host[y]:
                             peer_permission_incoming_traffic = host[y]
                         if "Allow Routing:" in host[y]:
@@ -1525,11 +1643,15 @@ def Peers_Changed(obj):
                             peer_permission_lan = host[y]
                         if "Allow Sending Files:" in host[y]:
                             peer_permission_sending_files = host[y]
+                        if "Nickname:" in host[z]:
+                            peer_nickname = host[z]
+                            peer_nickname_split = peer_nickname.split(":")
+                            if peer_nickname_split[1] != " -":
+                                peer_nickname = peer_nickname_split[1]
+                            else:
+                                peer_nickname = ""
                 y = y + 1
-            #print("1 " + peer_permission_incoming_traffic)
-            #print("2 " + peer_permission_routing)
-            #print("3 " + peer_permission_lan)
-            #print("4 " + peer_permission_sending_files)
+
 
             if "enabled" in peer_permission_incoming_traffic:
                 cbutton_incoming_traffic.set_active(1)
@@ -1548,17 +1670,20 @@ def Peers_Changed(obj):
             else:
                 cbutton_sending_files.set_active(0)
 
+            entry_nickname.set_text(peer_nickname)
+
         else:
-            #print("leeg")
             peer_permission_incoming_traffic = ""
             peer_permission_routing = ""
             peer_permission_lan = ""
             peer_permission_sending_files = ""
             peer = ""
+            peer_nickname = ""
             cbutton_incoming_traffic.set_active(0)
             cbutton_routing.set_active(0)
             cbutton_lan.set_active(0)
             cbutton_sending_files.set_active(0)
+            entry_nickname.set_text("")
 
 
 def Button_Update_Peers_Clicked(obj):
@@ -1612,7 +1737,6 @@ def Button_Update_Peers_Clicked(obj):
 
 
 def Cbutton_Traffic_Clicked(obj):
-    #print("1")
     global peer
     if peer != "":
         if cbutton_incoming_traffic.get_active() == 1:
@@ -1631,7 +1755,6 @@ def Cbutton_Traffic_Clicked(obj):
             rcstat = status.wait()
 
 def Cbutton_Routing_Clicked(obj):
-    # print("2")
     global peer
     if peer != "":
         if cbutton_routing.get_active() == 1:
@@ -1650,7 +1773,6 @@ def Cbutton_Routing_Clicked(obj):
             rcstat = status.wait()
 
 def Cbutton_Lan_Clicked(obj):
-    # print("3")
     global peer
     if peer != "":
         if cbutton_lan.get_active() == 1:
@@ -1669,7 +1791,6 @@ def Cbutton_Lan_Clicked(obj):
             rcstat = status.wait()
 
 def Cbutton_Sendf_Clicked(obj):
-    #print("4")
     global peer
     if peer != "":
         if cbutton_sending_files.get_active() == 1:
@@ -1769,11 +1890,95 @@ def Button_Unlink_Peer_Clicked(obj):
             dialog.run()
             dialog.destroy()
 
+def Button_Nickname_Peer_Clicked(obj):
+    global peer
+    global peer_nickname
+    global MES
+    peer_nickname = entry_nickname.get_text()
+
+    if MES == 1:
+        if peer_nickname != "" and "-" not in peer_nickname and "_" not in peer_nickname\
+                and " " not in peer_nickname and ";" not in peer_nickname:
+            #print("update nickname")
+            status = subprocess.Popen(
+                "/usr/bin/nordvpn meshnet peer nickname set " + peer + " " + peer_nickname,
+                shell=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE, universal_newlines=True)
+            rcstat = status.wait()
+            dialog = Gtk.MessageDialog(
+                title="gNordVPN",
+                parent=win,
+                flags=0,
+                message_type=Gtk.MessageType.INFO,
+                buttons=Gtk.ButtonsType.OK,
+                text="Peer nickname has been updated."
+                )
+            dialog.run()
+            dialog.destroy()
+    else:
+        dialog = Gtk.MessageDialog(
+            title="gNordVPN",
+            parent=win,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text="You must enable meshnet to update nicknames."
+        )
+        dialog.run()
+        dialog.destroy()
+
+def Button_Remove_Nickname_Clicked(obj):
+    global peer
+    global peer_nickname
+    if peer != "" and peer_nickname != "":
+        #print("remove nickname")
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn meshnet peer nickname remove " + peer,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+        entry_nickname.set_text("")
+        peer_nickname = ""
+        dialog = Gtk.MessageDialog(
+            title="gNordVPN",
+            parent=win,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text="Peer nickname has been removed."
+        )
+        dialog.run()
+        dialog.destroy()
+
+
+def Send_Rating(obj):
+    rating = entry_ratings.get_text()
+    if rating == "1" or rating =="2" or rating == "3" or rating == "4" or rating == "5":
+        status = subprocess.Popen(
+            "/usr/bin/nordvpn rate " + rating,
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+        dialog = Gtk.MessageDialog(
+            title="gNordVPN",
+            parent=win,
+            flags=0,
+            message_type=Gtk.MessageType.INFO,
+            buttons=Gtk.ButtonsType.OK,
+            text="Thank you for your feedback."
+        )
+        dialog.run()
+        dialog.destroy()
+    entry_ratings.set_text("")
+
+
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
     def __init__(self):
-        x = random.randint(1, 100)
-        super().__init__(application_id="com.sprokkel78-" + str(x) + ".gnordvpn")
+        super().__init__(application_id="com.sprokkel78.gnordvpn")
         GLib.set_application_name("gNordVPN")
 
     def do_activate(self):
@@ -1783,10 +1988,7 @@ class MyApplication(Gtk.Application):
         # MAIN USER INTERFACE CODE
         # CREATE THE MAIN WINDOW
         win.set_title("gNordVPN " + ver)
-        win.set_default_size(500, 800)
-        file = "./gnordvpn.svg"
-        if os.path.exists(file):
-            win.set_default_icon_from_file("./gnordvpn.svg")
+        win.set_default_size(500, 830)
         win.set_resizable(False)
         win.connect("destroy", Stop_Application)
         win.connect("key-press-event", Key_Event)
@@ -1825,6 +2027,7 @@ class MyApplication(Gtk.Application):
         box1.pack_start(box22f, False, False, 0)
         box1.pack_start(box22g, False, False, 0)
         box1.pack_start(box22h, False, False, 0)
+        box1.pack_start(box22i, False, False, 0)
 
         # MESHNET
         box1.pack_start(box33a, False, False, 0)
@@ -1849,8 +2052,9 @@ class MyApplication(Gtk.Application):
         box1.pack_start(box55c, False, False, 0)
         box1.pack_start(box55d, False, False, 0)
         box1.pack_start(box55e, False, False, 0)
-        box1.pack_start(box55aa, False, False, 0)
+        #box1.pack_start(box55aa, False, False, 0)
         box1.pack_start(box55f, False, False, 0)
+        box1.pack_start(box55g, False, False, 0)
 
         box1.pack_start(box99a, True, True, 0)
 
@@ -2302,6 +2506,32 @@ class MyApplication(Gtk.Application):
         button_dns.connect("clicked", Activate_DNS)
         box22h.pack_start(button_dns, False, False, 0)
 
+        # HIER VERDER
+
+        label_rt_start = Gtk.Label()
+        label_rt_start.show()
+        label_rt_start.set_size_request(15, -1)
+        box22i.pack_start(label_rt_start, False, False, 0
+                          )
+        label_ratings = Gtk.Label()
+        label_ratings.set_text("Rate Connection")
+        label_ratings.set_xalign(0.0)
+        label_ratings.set_size_request(140, -1)
+        label_ratings.show()
+        box22i.pack_start(label_ratings, False, False, 0)
+
+        global entry_ratings
+        entry_ratings.show()
+        entry_ratings.set_width_chars(1)
+        entry_ratings.connect("activate", Send_Rating)
+        box22i.pack_start(entry_ratings, False, False, 0)
+
+        label_rt_nr = Gtk.Label()
+        label_rt_nr.set_text(" > 1 (slow) > 3 (medium) > 5 (fast)")
+        label_rt_nr.show()
+        label_rt_nr.set_size_request(100, -1)
+        box22i.pack_start(label_rt_nr, False, False, 0)
+
         # MESHNET MODULE BUTTON
         label_mes_start = Gtk.Label()
         label_mes_start.show()
@@ -2547,11 +2777,13 @@ class MyApplication(Gtk.Application):
         global cbutton_sending_files
 
         box55aa.set_size_request(-1, 15)
-        box55a.set_size_request(-1, 25)
-        box55b.set_size_request(-1, 25)
-        box55c.set_size_request(-1, 25)
-        box55d.set_size_request(-1, 25)
-        box55e.set_size_request(-1, 25)
+        box55a.set_size_request(-1, 34)
+        box55b.set_size_request(-1, 34)
+        box55c.set_size_request(-1, 34)
+        box55d.set_size_request(-1, 34)
+        box55e.set_size_request(-1, 34)
+        box55f.set_size_request(-1, 34)
+        #box55g.set_size_request(-1, 25)
 
         label55a = Gtk.Label()
         label55a.show()
@@ -2577,77 +2809,112 @@ class MyApplication(Gtk.Application):
         button_update_peers.connect("clicked", Button_Update_Peers_Clicked)
         box55a.pack_start(button_update_peers, False, False, 0)
 
-        label55b = Gtk.Label()
-        label55b.show()
-        label55b.set_size_request(15, -1)
-        box55b.pack_start(label55b, False, False, 0)
+        label55f = Gtk.Label()
+        label55f.show()
+        label55f.set_size_request(15, -1)
+        box55b.pack_start(label55f, False, False, 0)
+
+        label_nickname = Gtk.Label()
+        label_nickname.set_text("Peer Nickname")
+        label_nickname.set_xalign(0.0)
+        label_nickname.show()
+        label_nickname.set_size_request(135, -1)
+        box55b.pack_start(label_nickname, False, False, 0)
+
+        global entry_nickname
+        entry_nickname.show()
+        entry_nickname.set_width_chars(16)
+        entry_nickname.set_size_request(75, -1)
+        box55b.pack_start(entry_nickname, False, False, 0)
+
+        button_nickname_peer = Gtk.Button.new_with_label("Set Nickname")
+        button_nickname_peer.show()
+        button_nickname_peer.set_size_request(140, -1)
+        button_nickname_peer.connect("clicked", Button_Nickname_Peer_Clicked)
+        box55b.pack_start(button_nickname_peer, False, False, 0)
+
+        label55g = Gtk.Label()
+        label55g.show()
+        label55g.set_size_request(15, -1)
+        box55c.pack_start(label55g, False, False, 0)
 
         label_incoming_traffic = Gtk.Label()
         label_incoming_traffic.show()
         label_incoming_traffic.set_text("Allow Incoming Traffic")
         label_incoming_traffic.set_xalign(0.0)
         label_incoming_traffic.set_size_request(253, -1)
-        box55b.pack_start(label_incoming_traffic, False, False, 0)
+        box55c.pack_start(label_incoming_traffic, False, False, 0)
         cbutton_incoming_traffic.show()
         cbutton_incoming_traffic.connect("clicked", Cbutton_Traffic_Clicked)
-        box55b.pack_start(cbutton_incoming_traffic, False, False, 0)
+        box55c.pack_start(cbutton_incoming_traffic, False, False, 0)
 
-        label55c = Gtk.Label()
-        label55c.show()
-        label55c.set_size_request(15, -1)
-        box55c.pack_start(label55c, False, False, 0)
+        label55gc = Gtk.Label()
+        label55gc.show()
+        label55gc.set_size_request(6, -1)
+        box55c.pack_start(label55gc, False, False, 0)
+
+        button_remove_nickname = Gtk.Button.new_with_label("Remove Nickname")
+        button_remove_nickname.show()
+        button_remove_nickname.set_size_request(140, -1)
+        button_remove_nickname.connect("clicked", Button_Remove_Nickname_Clicked)
+        box55c.pack_start(button_remove_nickname, False, False, 0)
+
+        label55b = Gtk.Label()
+        label55b.show()
+        label55b.set_size_request(15, -1)
+        box55d.pack_start(label55b, False, False, 0)
 
         label_routing = Gtk.Label()
         label_routing.show()
         label_routing.set_text("Allow Routing")
         label_routing.set_xalign(0.0)
         label_routing.set_size_request(253, -1)
-        box55c.pack_start(label_routing, False, False, 0)
+        box55d.pack_start(label_routing, False, False, 0)
         cbutton_routing.show()
         cbutton_routing.connect("clicked", Cbutton_Routing_Clicked)
-        box55c.pack_start(cbutton_routing, False, False, 0)
+        box55d.pack_start(cbutton_routing, False, False, 0)
 
-        label55d = Gtk.Label()
-        label55d.show()
-        label55d.set_size_request(15, -1)
-        box55d.pack_start(label55d, False, False, 0)
+        label55c = Gtk.Label()
+        label55c.show()
+        label55c.set_size_request(15, -1)
+        box55e.pack_start(label55c, False, False, 0)
 
         label_lan = Gtk.Label()
         label_lan.show()
         label_lan.set_text("Allow LAN Access")
         label_lan.set_xalign(0.0)
         label_lan.set_size_request(253, -1)
-        box55d.pack_start(label_lan, False, False, 0)
+        box55e.pack_start(label_lan, False, False, 0)
         cbutton_lan.show()
         cbutton_lan.connect("clicked", Cbutton_Lan_Clicked)
-        box55d.pack_start(cbutton_lan, False, False, 0)
+        box55e.pack_start(cbutton_lan, False, False, 0)
 
         label55e = Gtk.Label()
         label55e.show()
         label55e.set_size_request(15, -1)
-        box55e.pack_start(label55e, False, False, 0)
+        box55f.pack_start(label55e, False, False, 0)
 
         label_sending_files = Gtk.Label()
         label_sending_files.show()
         label_sending_files.set_text("Allow Sending Files")
         label_sending_files.set_xalign(0.0)
         label_sending_files.set_size_request(253, -1)
-        box55e.pack_start(label_sending_files, False, False, 0)
+        box55f.pack_start(label_sending_files, False, False, 0)
         cbutton_sending_files.show()
         cbutton_sending_files.connect("clicked", Cbutton_Sendf_Clicked)
-        box55e.pack_start(cbutton_sending_files, False, False, 0)
+        box55f.pack_start(cbutton_sending_files, False, False, 0)
 
-        label55f = Gtk.Label()
-        label55f.show()
-        label55f.set_size_request(10, -1)
-        box55f.pack_start(label55f, False, False, 0)
+        label55gd = Gtk.Label()
+        label55gd.show()
+        label55gd.set_size_request(10, -1)
+        box55g.pack_start(label55gd, False, False, 0)
 
         button_unlink_peer = Gtk.Button.new_with_label("Unlink Peer")
         button_unlink_peer.show()
         button_unlink_peer.set_size_request(140, -1)
         button_unlink_peer.connect("clicked", Button_Unlink_Peer_Clicked)
-        box55f.pack_start(button_unlink_peer, False, False, 0)
-        
+        box55g.pack_start(button_unlink_peer, False, False, 0)
+
         # FOOTER: ADD A STATUSBAR WITH NORDVPN VERSION
         sb = Gtk.Statusbar()
         sb.show()
@@ -2675,9 +2942,13 @@ thread1 = Thread(target=Get_Incoming_Files)
 thread1.daemon = True
 thread1.start()
 
+
 sleep(1)
 
 # START THE APPLICATION
-app = MyApplication()
-exit_status = app.run(sys.argv)
-sys.exit(exit_status)
+def main():
+    app = MyApplication()
+    app.run(None)
+
+if __name__ == "__main__":
+    main()

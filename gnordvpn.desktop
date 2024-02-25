@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=gNordVPN
 Exec=/usr/bin/gnordvpn
-Comment=NordVPN UI Client
+Comment=NordVPN GUI Client
 Terminal=false
 Icon=/usr/share/gnordvpn-sprokkel78/gnordvpn.svg
 Type=Application

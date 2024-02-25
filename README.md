@@ -21,10 +21,14 @@ Note: check CHANGELOG.txt for additional notes and changes.
 Added 'install.sh' script for system-wide installation.
 - The startup shell script will be /usr/bin/gnordvpn
 - The application is installed in /usr/share/gnordvpn-sprokkel78
-- The .desktop file is placed in /usr/share/applications
+- The .desktop file is placed in /usr/share/applications/com.sprokkel78.gnordvpn.desktop
 
 Added 'uninstall.sh' script for system-wide uninstallation.
 - This will delete /usr/bin/gnordvpn and /usr/share/gnordvpn-sprokkel78,
-  This will also remove /usr/share/applications/gnordvpn.desktop
+  This will also remove /usr/share/applications/com.sprokkel78.gnordvpn.desktop
   
-Check https://www.github.com/sprokkel78/gnordvpn for development features and pre-releases.
+Check https://www.github.com/sprokkel78/gnordvpn for contributing, development features and pre-releases.
+
+Check https://pypi.org/project/gnordvpn-sprokkel78/ for the full python package.
+
+Funding: Paypal email: sprokkel78.bart@gmail.com
