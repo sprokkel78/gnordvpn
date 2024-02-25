@@ -7,6 +7,12 @@
 # the app will be placed in /usr/share/gnordvpn-sprokkel78
 # The .desktop file will be placed in /usr/share/applications/ as com.sprokkel78.gnordvpn.desktop
 
+FILE="/usr/share/applications/gnordvpn.desktop"
+if [ -f $FILE ]
+then
+  rm $FILE
+fi
+
 mkdir -p /usr/share/gnordvpn-sprokkel78
 cp -r ./* /usr/share/gnordvpn-sprokkel78/
 echo "#!/bin/sh" > /usr/bin/gnordvpn

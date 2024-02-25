@@ -32,8 +32,6 @@ CHANGELOG
 - this version is compatible with nordvpn client version 3.17.2 and up.
 - fix for the ubuntu dock application icon after doing a system wide installation.
   the new .desktop file is named /usr/share/applications/com.sprokkel78.gnordvpn.desktop,
-  you should manually remove /usr/share/applications/gnordvpn.desktop in case it is there
-  from a previous version.
 - code cleanup after setting the application id to com.sprokkel78.gnordvpn.
 - added peer nicknames to peer permissions view.
 - fix for show_devices output after changing to another menu item.
