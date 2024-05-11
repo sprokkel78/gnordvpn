@@ -2923,9 +2923,7 @@ class MyApplication(Gtk.Application):
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         rc = result.wait()
         out, err = result.communicate()
-        line = out.split('\n')
-        line[3].strip()
-        push = " " + line[3]
+        push = " " + str(out).strip()
         sb.push(0, push)
 
         win.present()
