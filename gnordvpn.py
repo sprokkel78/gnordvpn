@@ -11,8 +11,8 @@ from threading import Thread
 from time import sleep
 
 
-# VERSION = 1.3.1
-ver = "1.3.1"
+# VERSION = 1.3.2
+ver = "1.3.2"
 
 
 # TODO
@@ -2923,9 +2923,7 @@ class MyApplication(Gtk.Application):
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         rc = result.wait()
         out, err = result.communicate()
-        line = out.split('\n')
-        line[3].strip()
-        push = " " + line[3]
+        push = " " + str(out).strip()
         sb.push(0, push)
 
         win.present()
