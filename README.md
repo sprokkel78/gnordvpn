@@ -5,8 +5,10 @@ It requires Python3.10 or higher, Pip, Venv and the PyGTK apps, it also relies o
 and sending files. Developed and tested on Ubuntu 24.04. 
 
 Note: You must start gnordvpn.py from its own directory or it will not find the css file.
+
 Note: check CHANGELOG.txt for additional notes and changes.
-Note: check https://github.com/NordSecurity/nordvpn-linux/issues for issue's with nordvpn binary.
+
+Note: check https://github.com/NordSecurity/nordvpn-linux/issues for issue's with the nordvpn binary.
 
 Added 'install.sh' script for system-wide installation.
 - The startup shell script will be /usr/bin/gnordvpn
