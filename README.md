@@ -1,11 +1,25 @@
 gnordvpn-sprokkel78
 
-A graphical user interface in PyGTK for using the nordvpn client binary on Ubuntu and other Linux distro's. 
-It requires Python3.10 or higher, Pip, Venv and the PyGTK apps, it also relies on gnome-terminal for accepting
+A graphical user interface in PyGTK3 for using the nordvpn client binary on Ubuntu and other Linux distro's. 
+It requires Python3.10 and the PyGTK apps, it also relies on gnome-terminal for accepting
 and sending files. Developed and tested on Ubuntu 24.04. 
 
-Note: You must start gnordvpn.py from its own directory or it will not find the css file.
+Installation on Ubuntu 24.04:
+
+1. $git clone https://github.com/sprokkel78/gnordvpn.git
+2. $cd gnordvpn
+3. $python3 ./gnordvpn.py
+
+For System-Wide Installation, run:
+- $sudo ./install.sh
+
+Then start with:
+- $gnordvpn
+- or by clicking the application icon.
+
 Note: check CHANGELOG.txt for additional notes and changes.
+
+Note: check https://github.com/NordSecurity/nordvpn-linux/issues for issue's with the nordvpn binary.
 
 Added 'install.sh' script for system-wide installation.
 - The startup shell script will be /usr/bin/gnordvpn
