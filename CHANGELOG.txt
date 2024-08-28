@@ -29,6 +29,8 @@ CHANGELOG
 ---------
 
 # gnordvpn-sprokkel78 1.3.3
+- added setting Virtual Location to the app.
+- added setting Tray Icon to the app.
 
 # gnordvpn-sprokkel78 1.3.2
 - fix for nordvpn version 3.18.1

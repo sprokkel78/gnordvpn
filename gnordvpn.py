@@ -69,10 +69,12 @@ combobox2 = Gtk.ComboBox()
 combobox3 = Gtk.ComboBox()
 combobox51 = Gtk.ComboBox()
 combobox4 = Gtk.ComboBox()
+combobox444a = Gtk.ComboBox()
 combobox3a = Gtk.ComboBox()
 combobox4a = Gtk.ComboBox()
 combobox6a = Gtk.ComboBox()
 combobox6b = Gtk.ComboBox()
+combobox666b = Gtk.ComboBox()
 combobox6c = Gtk.ComboBox()
 entry_allow_net = Gtk.Entry()
 entry_allow_port = Gtk.Entry()
@@ -440,6 +442,21 @@ def Lan_Discovery_Changed(obj):
         rcstat = status.wait()
     combobox6c.set_active(0)
 
+def Location_Changed(obj):
+    item = combobox444a.get_model()[combobox444a.get_active()]
+    if item[0] != "Virt. Location":
+        status = subprocess.Popen("/usr/bin/nordvpn set virtual-location " + item[0], shell=True,
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+    combobox444a.set_active(0)
+
+def Tray_Changed(obj):
+    item = combobox666b.get_model()[combobox666b.get_active()]
+    if item[0] != "Tray Icon":
+        status = subprocess.Popen("/usr/bin/nordvpn set tray " + item[0], shell=True,
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+    combobox666b.set_active(0)
 
 def TPL_Changed(obj):
     if button_tpl.get_active() == 0:
@@ -610,6 +627,18 @@ def Get_Nordvpn_Status():
                 else:
                     lock = 0
 
+            y = y + 1
+        y = 0
+
+        while y < len(lsettings):
+            if "Virtual" in lsettings[y]:
+                txt = txt + "   " + lsettings[y] + "\n"
+            y = y + 1
+        y = 0
+
+        while y < len(lsettings):
+            if "Tray" in lsettings[y]:
+                txt = txt + "   " + lsettings[y] + "\n"
             y = y + 1
         y = 0
 
@@ -1988,7 +2017,7 @@ class MyApplication(Gtk.Application):
         # MAIN USER INTERFACE CODE
         # CREATE THE MAIN WINDOW
         win.set_title("gNordVPN " + ver)
-        win.set_default_size(500, 830)
+        win.set_default_size(500, 870)
         win.set_resizable(False)
         win.connect("destroy", Stop_Application)
         win.connect("key-press-event", Key_Event)
@@ -2175,7 +2204,7 @@ class MyApplication(Gtk.Application):
         global tbuffer
         textview = Gtk.TextView.new_with_buffer(tbuffer)
         textview.show()
-        scrolled_window.set_size_request(500, 360)
+        scrolled_window.set_size_request(500, 400)
         textview.set_name("textview")
         textview.set_buffer(tbuffer)
         textview.set_editable(False)
@@ -2419,6 +2448,41 @@ class MyApplication(Gtk.Application):
         combobox6c.set_active(0)
         combobox6c.connect("changed", Lan_Discovery_Changed)
         box22c.pack_start(combobox6c, False, False, 0)
+
+        liststore444a = Gtk.ListStore(str)
+        liststore444a.append(['Virt. Location'])
+        liststore444a.append(['enable'])
+        liststore444a.append(['disable'])
+        cell444a = Gtk.CellRendererText()
+        global combobox444a
+        combobox444a.set_size_request(140, -1)
+        combobox444a.show()
+        combobox444a.set_name("cbbox")
+        combobox444a.pack_start(cell444a, True)
+        combobox444a.add_attribute(cell444a, 'text', 0)
+        combobox444a.set_model(liststore444a)
+        combobox444a.set_active(0)
+        combobox444a.connect("changed", Location_Changed)
+        box22a.pack_start(combobox444a, False, False, 0)
+
+        liststore666b = Gtk.ListStore(str)
+        liststore666b.append(['Tray Icon'])
+        liststore666b.append(['enable'])
+        liststore666b.append(['disable'])
+        cell666b = Gtk.CellRendererText()
+        global combobox666b
+        combobox666b.set_size_request(140, -1)
+        combobox666b.show()
+        combobox666b.set_name("cbbox")
+        combobox666b.pack_start(cell666b, True)
+        combobox666b.add_attribute(cell666b, 'text', 0)
+        combobox666b.set_model(liststore666b)
+        combobox666b.set_active(0)
+        combobox666b.connect("changed", Tray_Changed)
+        box22b.pack_start(combobox666b, False, False, 0)
+        label666c = Gtk.Label()
+        box22b.pack_start(label666c, True, True, 0)
+
 
         box22d.pack_start(sep5, True, True, 0)
 
