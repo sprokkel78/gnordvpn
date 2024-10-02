@@ -919,11 +919,11 @@ def Get_Peer_List():
                     else:
                         if "Hostname" in st:
                             if nickname_split[1] != " -" and nickname_split != "":
-                                txtp = txtp + "\n\n  -> " + st + "\n"
+                                txtp = txtp + "\n -> " + st
                                 nickname_split = ("", " -")
 
                             else:
-                                txtp = txtp + "\n\n  -> " + st
+                                txtp = txtp + "\n\n -> " + st
 
                         else:
                             if "External Peers" in st:
@@ -933,9 +933,9 @@ def Get_Peer_List():
                                     #print(st)
                                     nickname_split = st.split(":")
                                     if nickname_split[1] != " -" and nickname_split[1] != "":
-                                        txtp = txtp + "\n\n  -> " + st
+                                        txtp = txtp + "\n -> " + st
                                     else:
-                                        txtp = txtp + "\n\n  -> " + st + "\n"
+                                        txtp = txtp + "\n -> " + st
                                 else:
                                     if "Fileshare" in st:
                                         txtp = txtp + "\n"
