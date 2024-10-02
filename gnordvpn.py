@@ -2827,7 +2827,7 @@ class MyApplication(Gtk.Application):
         textview_allow.set_editable(False)
         textview_allow.set_wrap_mode(Gtk.WrapMode.WORD)
         scrolled_window_allow.add(textview_allow)
-        box44c.pack_start(scrolled_window_allow, False, False, 0)
+        box44c.pack_start(scrolled_window_allow, True, True, 0)
         tbuffer_allow.set_text("\n   AllowList")
 
         label_start1 = Gtk.Label()
