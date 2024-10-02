@@ -29,7 +29,7 @@ CHANGELOG
 ---------
 
 # gnordvpn-sprokkel78 1.3.4
-
+- added option to go fullscreen.
 
 # gnordvpn-sprokkel78 1.3.3
 - added setting Virtual Location to the app.
