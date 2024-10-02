@@ -2035,13 +2035,13 @@ class MyApplication(Gtk.Application):
 
         # CONSOLE
         box_main.pack_start(box0, False, False, 0)
-        box_main.pack_start(box1, True, True, 0)
+        box_main.pack_start(box1, False, True, 0)
         box11a.pack_start(sep1, True, True, 0)
         box1.pack_start(box11a, False, False, 0)
         box1.pack_start(box11b, False, False, 0)
         box11c.pack_start(sep2, True, True, 0)
         box1.pack_start(box11c, False, False, 0)
-        box1.pack_start(box11d, True, True, 0)
+        box1.pack_start(box11d, False, True, 0)
         box1.pack_start(box11e, False, False, 0)
         box1.pack_start(box11f, False, False, 0)
         box11g.pack_start(sep3, True, True, 0)
@@ -2207,17 +2207,17 @@ class MyApplication(Gtk.Application):
         textview.show()
         scrolled_window.set_size_request(500, 400)
         scrolled_window.set_hexpand(True)
-        scrolled_window.set_vexpand(True)
+        scrolled_window.set_vexpand(False)
 
         textview.set_name("textview")
         textview.set_buffer(tbuffer)
         textview.set_editable(False)
         textview.set_wrap_mode(Gtk.WrapMode.NONE)
         textview.set_hexpand(True)
-        textview.set_vexpand(True)
+        textview.set_vexpand(False)
 
         scrolled_window.add(textview)
-        box11d.pack_start(scrolled_window, True, True, 0)
+        box11d.pack_start(scrolled_window, False, True, 0)
 
         # CREATE THE BUTTON BAR
         label_buttons = Gtk.Separator()
