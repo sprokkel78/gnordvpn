@@ -562,6 +562,12 @@ def Get_Nordvpn_Status():
         y = 0
 
         while y < len(lsettings):
+            if "Firewall:" in lsettings[y]:
+                txt = txt + "   " + lsettings[y] + "\n"
+            y = y + 1
+        y = 0
+
+        while y < len(lsettings):
             if "Kill" in lsettings[y]:
                 txt = txt + "   " + lsettings[y] + "\n"
             y = y + 1
