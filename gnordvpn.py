@@ -25,6 +25,7 @@ MES = 0
 sens = 0
 selected_file = ""
 OBF = 0
+FW = 0
 stat = 0
 lock = 0
 peer = ""
@@ -41,10 +42,12 @@ label1 = Gtk.Label()
 button_dns = Gtk.Button.new_with_label("Activate")
 entry_dns = Gtk.Entry()
 tbuffer = Gtk.TextBuffer()
+button_fw = Gtk.CheckButton()
 button_obf = Gtk.CheckButton()
 button_tpl = Gtk.CheckButton()
 button_mes = Gtk.CheckButton()
 tbuffer_allow = Gtk.TextBuffer()
+label_fw_status = Gtk.Label()
 label_obf_status = Gtk.Label()
 label_tpl_status = Gtk.Label()
 label_mes_status = Gtk.Label()
@@ -143,6 +146,8 @@ box22c = Gtk.Box(spacing=6)
 box22c.show()
 box22d = Gtk.Box(spacing=6)
 box22d.show()
+box22de = Gtk.Box(spacing=6)
+box22de.show()
 box22e = Gtk.Box(spacing=6)
 box22e.show()
 box22f = Gtk.Box(spacing=6)
@@ -492,6 +497,18 @@ def OBF_Changed(obj):
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         rcstat = status.wait()
 
+def FW_Changed(obj):
+    if button_fw.get_active() == 0:
+        label_fw_status.set_text("Disabled")
+        status = subprocess.Popen("/usr/bin/nordvpn set firewall disable", shell=True,
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+    if button_fw.get_active() == 1:
+        label_fw_status.set_text("Enabled")
+        status = subprocess.Popen("/usr/bin/nordvpn set firewall enable ", shell=True,
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+
 
 def Update_TextView(st):
     global pause
@@ -593,6 +610,17 @@ def Get_Nordvpn_Status():
             y = y + 1
         y = 0
 
+        global FW
+
+        while y < len(lsettings):
+            if "Firewall:" in lsettings[y]:
+                if "enabled" in lsettings[y]:
+                    FW = 1
+                else:
+                    FW = 0
+            y = y + 1
+        y = 0
+
         global OBF
 
         while y < len(lsettings):
@@ -646,6 +674,11 @@ def Get_Nordvpn_Status():
         txt = " " + txt
         GLib.idle_add(Update_TextView, txt)
 
+        if FW == 0:
+            GLib.idle_add(UpdateUI_FW_Off, 1)
+        else:
+            GLib.idle_add(UpdateUI_FW_On, 1)
+
         if OBF == 0:
             GLib.idle_add(UpdateUI_OBF_Off, 1)
         else:
@@ -681,6 +714,20 @@ def Get_Nordvpn_Status():
 
 def Update_Allowlist_View(text):
     tbuffer_allow.set_text(text)
+
+
+
+def UpdateUI_FW_Off(value):
+    if value == 1:
+        button_fw.set_active(0)
+        label_fw_status.set_text("Disabled")
+
+
+def UpdateUI_FW_On(value):
+    if value == 1:
+        button_fw.set_active(1)
+        label_fw_status.set_text("Enabled")
+
 
 
 def UpdateUI_OBF_Off(value):
@@ -2053,6 +2100,7 @@ class MyApplication(Gtk.Application):
         box1.pack_start(box22b, False, False, 0)
         box1.pack_start(box22c, False, False, 0)
         box1.pack_start(box22d, False, False, 0)
+        box1.pack_start(box22de, False, False, 0)
         box1.pack_start(box22e, False, False, 0)
         box1.pack_start(box22f, False, False, 0)
         box1.pack_start(box22g, False, False, 0)
@@ -2493,7 +2541,36 @@ class MyApplication(Gtk.Application):
 
         box22d.pack_start(sep5, True, True, 0)
 
-        box22e.set_size_request(-1, 40)
+        box22de.set_size_request(-1, 40)
+        label_fw_start = Gtk.Label()
+        label_fw_start.show()
+        label_fw_start.set_size_request(15, 10)
+        box22de.pack_start(label_fw_start, False, False, 0)
+        label_fw = Gtk.Label()
+        label_fw.show()
+        label_fw.set_xalign(0.0)
+        label_fw.set_name("label")
+        label_fw.set_size_request(140, -1)
+        label_fw.set_text("Firewall")
+        box22de.pack_start(label_fw, False, False, 0)
+        global button_fw
+        button_fw.set_size_request(31, -1)
+        button_fw.show()
+        button_fw.set_active(0)
+        button_fw.connect("clicked", FW_Changed)
+        box22de.pack_start(button_fw, False, False, 0)
+        global label_fw_status
+        label_fw_status.set_xalign(0.0)
+        label_fw_status.show()
+        label_fw_status.set_size_request(65, -1)
+        label_fw_status.set_text("Disabled")
+        box22de.pack_start(label_fw_status, False, False, 0)
+        label_fw_txt = Gtk.Label()
+        label_fw_txt.set_xalign(0.0)
+        label_fw_txt.set_text("(Killswitch must be off)")
+        label_fw_txt.show()
+        box22de.pack_start(label_fw_txt, False, False, 0)
+
         label_obf_start = Gtk.Label()
         label_obf_start.show()
         label_obf_start.set_size_request(15, 10)
