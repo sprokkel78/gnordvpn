@@ -2577,7 +2577,7 @@ class MyApplication(Gtk.Application):
         box22de.pack_start(label_fw_status, False, False, 0)
         label_fw_txt = Gtk.Label()
         label_fw_txt.set_xalign(0.0)
-        label_fw_txt.set_text("(Killswitch must be off)")
+        label_fw_txt.set_text("(Killswitch must be off to disable)")
         label_fw_txt.show()
         box22de.pack_start(label_fw_txt, False, False, 0)
 
@@ -2606,7 +2606,7 @@ class MyApplication(Gtk.Application):
         box22e.pack_start(label_obf_status, False, False, 0)
         label_obf_txt = Gtk.Label()
         label_obf_txt.set_xalign(0.0)
-        label_obf_txt.set_text("(OpenVPN Tech. only)")
+        label_obf_txt.set_text("(OpenVPN Tech. only to enable)")
         label_obf_txt.show()
         box22e.pack_start(label_obf_txt, False, False, 0)
 
