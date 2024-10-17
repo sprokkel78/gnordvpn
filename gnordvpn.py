@@ -2263,7 +2263,7 @@ class MyApplication(Gtk.Application):
         global tbuffer
         textview = Gtk.TextView.new_with_buffer(tbuffer)
         textview.show()
-        scrolled_window.set_size_request(500, 400)
+        scrolled_window.set_size_request(500, 435)
         scrolled_window.set_hexpand(True)
         scrolled_window.set_vexpand(False)
 
