@@ -35,6 +35,7 @@ peer_permission_lan = ""
 peer_permission_sending_files = ""
 peer_nickname = ""
 show_devices = 0
+transparent = 0
 
 
 # GLOBAL GTK WIDGETS
@@ -2061,6 +2062,7 @@ def Send_Rating(obj):
     entry_ratings.set_text("")
 
 
+
 # CREATE THE GTK APPLICATION
 class MyApplication(Gtk.Application):
     def __init__(self):
@@ -2070,6 +2072,15 @@ class MyApplication(Gtk.Application):
     def do_activate(self):
         global win
         win = Gtk.ApplicationWindow(application=self, title="gnordvpn")
+
+        global transparent
+        if transparent == 1:
+            # Set window transparency support
+            win.set_visual(win.get_screen().get_rgba_visual())
+
+            # Set background color to transparent
+            rgba = Gdk.RGBA(0, 0, 0, 0)  # Black with full transparency
+            win.override_background_color(Gtk.StateFlags.NORMAL, rgba)
 
         # MAIN USER INTERFACE CODE
         # CREATE THE MAIN WINDOW
@@ -2086,6 +2097,7 @@ class MyApplication(Gtk.Application):
         screen = win.get_screen()
         context = win.get_style_context()
         context.add_provider_for_screen(screen, css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
+
 
         # BUILT USER INTERFACE
 
@@ -2263,8 +2275,8 @@ class MyApplication(Gtk.Application):
         global tbuffer
         textview = Gtk.TextView.new_with_buffer(tbuffer)
         textview.show()
-        scrolled_window.set_size_request(500, 435)
-        scrolled_window.set_hexpand(True)
+        scrolled_window.set_size_request(600, 435)
+        scrolled_window.set_hexpand(False)
         scrolled_window.set_vexpand(False)
 
         textview.set_name("textview")
