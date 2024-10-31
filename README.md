@@ -35,3 +35,5 @@ Check https://www.github.com/sprokkel78/gnordvpn for contributing, development f
 Check https://pypi.org/project/gnordvpn-sprokkel78/ for the full python package.
 
 Funding: Paypal email: sprokkel78.bart@gmail.com
+
+![Screenshot](https://github.com/sprokkel78/gnordvpn/blob/develop/screenshots/gnordvpn-5.png)
