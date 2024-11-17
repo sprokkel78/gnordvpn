@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d79a04e6-f530-44b3-bd70-9e9acdebdcba" name="Changes" comment="added screenshot">
+    <list default="true" id="d79a04e6-f530-44b3-bd70-9e9acdebdcba" name="Changes" comment="small update to userinterface">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +80,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730388792465</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="small update to userinterface">
+      <option name="closed" value="true" />
+      <created>1730912523265</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730912523265</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -89,6 +96,7 @@
     <MESSAGE value="small adjustment to height of the textview." />
     <MESSAGE value="removed hexpand from scrolled window/textview" />
     <MESSAGE value="added screenshot" />
-    <option name="LAST_COMMIT_MESSAGE" value="added screenshot" />
+    <MESSAGE value="small update to userinterface" />
+    <option name="LAST_COMMIT_MESSAGE" value="small update to userinterface" />
   </component>
 </project>
