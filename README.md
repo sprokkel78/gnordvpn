@@ -9,10 +9,10 @@ Runs out of the box after default installation of Fedora or Ubuntu.
 ![Screenshot](https://github.com/sprokkel78/gnordvpn/blob/develop/screenshots/gnordvpn-5.png)
 
 Installation on Fedora 41 & Ubuntu 24.04:
-   $sudo dnf|apt install gnome-terminal
-1. $git clone https://github.com/sprokkel78/gnordvpn.git
-2. $cd gnordvpn
-3. $python3 ./gnordvpn.py
+1. $sudo dnf|apt install gnome-terminal
+2. $git clone https://github.com/sprokkel78/gnordvpn.git
+3. $cd gnordvpn
+4. $python3 ./gnordvpn.py
 
 For System-Wide Installation, run:
 - $sudo ./install.sh
