@@ -2172,7 +2172,7 @@ class MyApplication(Gtk.Application):
         label1.set_xalign(0.5)
         label1.set_yalign(0.5)
         label1.show()
-        label1.set_text("NVPN Connection")
+        label1.set_text("NORD Connection")
         label1.set_width_chars(13)
         label1.set_size_request(135, -1)
         box11b.pack_start(label1, False, False, 0)

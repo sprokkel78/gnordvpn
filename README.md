@@ -2,15 +2,17 @@ gnordvpn-sprokkel78
 
 A graphical user interface in PyGTK3 for using the nordvpn client binary on Ubuntu and other Linux distro's. 
 It requires Python3.10 and the PyGTK apps, it also relies on gnome-terminal for accepting
-and sending files. Developed on Fedora 40 and tested on Ubuntu 24.04. 
+and sending files. Developed on Fedora 41 and tested on Ubuntu 24.04. 
+
+Runs out of the box after default installation of Fedora or Ubuntu.
 
 ![Screenshot](https://github.com/sprokkel78/gnordvpn/blob/develop/screenshots/gnordvpn-5.png)
 
-Installation on Fedora 40 & Ubuntu 24.04:
-
-1. $git clone https://github.com/sprokkel78/gnordvpn.git
-2. $cd gnordvpn
-3. $python3 ./gnordvpn.py
+Installation on Fedora 41 & Ubuntu 24.04:
+1. $sudo dnf|apt install gnome-terminal (dnf for fedora, apt for ubuntu)
+2. $git clone https://github.com/sprokkel78/gnordvpn.git
+3. $cd gnordvpn
+4. $python3 ./gnordvpn.py
 
 For System-Wide Installation, run:
 - $sudo ./install.sh
