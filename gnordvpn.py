@@ -79,6 +79,7 @@ combobox4a = Gtk.ComboBox()
 combobox6a = Gtk.ComboBox()
 combobox6b = Gtk.ComboBox()
 combobox666b = Gtk.ComboBox()
+combobox777b = Gtk.ComboBox()
 combobox6c = Gtk.ComboBox()
 entry_allow_net = Gtk.Entry()
 entry_allow_port = Gtk.Entry()
@@ -463,6 +464,15 @@ def Tray_Changed(obj):
                                   stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
         rcstat = status.wait()
     combobox666b.set_active(0)
+
+def PQ_Changed(obj):
+    item = combobox777b.get_model()[combobox777b.get_active()]
+    if item[0] != "Post Quantum":
+        status = subprocess.Popen("/usr/bin/nordvpn set post-quantum " + item[0], shell=True,
+                                  stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+        rcstat = status.wait()
+    combobox777b.set_active(0)
+
 
 def TPL_Changed(obj):
     if button_tpl.get_active() == 0:
@@ -2560,6 +2570,23 @@ class MyApplication(Gtk.Application):
         label666c = Gtk.Label()
         box22b.pack_start(label666c, True, True, 0)
 
+        liststore777b = Gtk.ListStore(str)
+        liststore777b.append(['Post Quantum'])
+        liststore777b.append(['enable'])
+        liststore777b.append(['disable'])
+        cell777b = Gtk.CellRendererText()
+        global combobox777b
+        combobox777b.set_size_request(140, -1)
+        combobox777b.show()
+        combobox777b.set_name("cbbox")
+        combobox777b.pack_start(cell777b, True)
+        combobox777b.add_attribute(cell777b, 'text', 0)
+        combobox777b.set_model(liststore777b)
+        combobox777b.set_active(0)
+        combobox777b.connect("changed", PQ_Changed)
+        box22c.pack_start(combobox777b, False, False, 0)
+        label777c = Gtk.Label()
+        box22c.pack_start(label777c, True, True, 0)
 
         box22d.pack_start(sep5, True, True, 0)
 

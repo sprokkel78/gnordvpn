@@ -20,6 +20,9 @@ NOTES:
 - Adding Private Network Addresses as a subnet to the allowlist is only possible 
   if LAN DISCOVERY is turned OFF.
 
+- THe Post Quantum VPN option can only be used with the NORDLYNX technology and
+  requires a reconnection.
+
 CONTROL KEYS
 ------------
 Pressing CTRL-q will quit the application.
@@ -29,6 +32,7 @@ CHANGELOG
 ---------
 
 # gnordvpn-sprokkel78 1.3.5
+- added post quantum encryption to the settings.
 - small adjustment to height of the textview.
 - added an easter egg for window transparency.
 
