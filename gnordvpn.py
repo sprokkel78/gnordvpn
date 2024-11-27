@@ -202,7 +202,7 @@ box99c.show()
 # CHECK IF GNORDVPN.PY IS ALREADY RUNNING
 print("Check if gNordVPN is already running. please wait.")
 
-status = subprocess.Popen("ps ax | grep \"python3 ./gnordvpn.py\" | grep -v \"grep\"",\
+status = subprocess.Popen("ps aux | grep \"python3 ./gnordvpn.py\" | grep -v \"grep\"",\
                           shell=True, stdout=subprocess.PIPE,\
                           stderr=subprocess.PIPE, universal_newlines=True)
 rcstat = status.wait()
