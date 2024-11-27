@@ -11,8 +11,8 @@ from threading import Thread
 from time import sleep
 
 
-# VERSION = 1.3.5
-ver = "1.3.5"
+# VERSION = 1.3.6
+ver = "1.3.6"
 
 
 # TODO
@@ -2285,7 +2285,7 @@ class MyApplication(Gtk.Application):
         global tbuffer
         textview = Gtk.TextView.new_with_buffer(tbuffer)
         textview.show()
-        scrolled_window.set_size_request(600, 435)
+        scrolled_window.set_size_request(600, 445)
         scrolled_window.set_hexpand(False)
         scrolled_window.set_vexpand(False)
 

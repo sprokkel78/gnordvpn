@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d79a04e6-f530-44b3-bd70-9e9acdebdcba" name="Changes" comment="small update to userinterface">
+    <list default="true" id="d79a04e6-f530-44b3-bd70-9e9acdebdcba" name="Changes" comment="added post quantum to the settings">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CHANGELOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gnordvpn.py" beforeDir="false" afterPath="$PROJECT_DIR$/gnordvpn.py" afterDir="false" />
@@ -90,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730912523265</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added post quantum to the settings">
+      <option name="closed" value="true" />
+      <created>1732742494092</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1732742494092</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -99,6 +107,7 @@
     <MESSAGE value="removed hexpand from scrolled window/textview" />
     <MESSAGE value="added screenshot" />
     <MESSAGE value="small update to userinterface" />
-    <option name="LAST_COMMIT_MESSAGE" value="small update to userinterface" />
+    <MESSAGE value="added post quantum to the settings" />
+    <option name="LAST_COMMIT_MESSAGE" value="added post quantum to the settings" />
   </component>
 </project>
