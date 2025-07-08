@@ -11,8 +11,8 @@ from threading import Thread
 from time import sleep
 
 
-# VERSION = 1.3.5
-ver = "1.3.5"
+# VERSION = 1.3.6
+ver = "1.3.6"
 
 
 # TODO
@@ -202,7 +202,7 @@ box99c.show()
 # CHECK IF GNORDVPN.PY IS ALREADY RUNNING
 print("Check if gNordVPN is already running. please wait.")
 
-status = subprocess.Popen("ps ax | grep \"python3 ./gnordvpn.py\" | grep -v \"grep\"",\
+status = subprocess.Popen("ps aux | grep \"python3 ./gnordvpn.py\" | grep -v \"grep\"",\
                           shell=True, stdout=subprocess.PIPE,\
                           stderr=subprocess.PIPE, universal_newlines=True)
 rcstat = status.wait()
@@ -2285,7 +2285,7 @@ class MyApplication(Gtk.Application):
         global tbuffer
         textview = Gtk.TextView.new_with_buffer(tbuffer)
         textview.show()
-        scrolled_window.set_size_request(600, 435)
+        scrolled_window.set_size_request(600, 445)
         scrolled_window.set_hexpand(False)
         scrolled_window.set_vexpand(False)
 
@@ -2503,13 +2503,13 @@ class MyApplication(Gtk.Application):
         box22a.pack_start(combobox6a, False, False, 0)
 
         liststore6b = Gtk.ListStore(str)
-        liststore6b.append(['IPV6           '])
+        liststore6b.append(['IPV6        '])
         liststore6b.append(['enable'])
         liststore6b.append(['disable'])
         cell6b = Gtk.CellRendererText()
         global combobox6b
         combobox6b.set_size_request(140, -1)
-        combobox6b.show()
+        #combobox6b.show()
         combobox6b.set_name("cbbox")
         combobox6b.pack_start(cell6b, True)
         combobox6b.add_attribute(cell6b, 'text', 0)
