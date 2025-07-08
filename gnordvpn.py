@@ -2503,13 +2503,13 @@ class MyApplication(Gtk.Application):
         box22a.pack_start(combobox6a, False, False, 0)
 
         liststore6b = Gtk.ListStore(str)
-        liststore6b.append(['IPV6           '])
+        liststore6b.append(['IPV6        '])
         liststore6b.append(['enable'])
         liststore6b.append(['disable'])
         cell6b = Gtk.CellRendererText()
         global combobox6b
         combobox6b.set_size_request(140, -1)
-        combobox6b.show()
+        #combobox6b.show()
         combobox6b.set_name("cbbox")
         combobox6b.pack_start(cell6b, True)
         combobox6b.add_attribute(cell6b, 'text', 0)
