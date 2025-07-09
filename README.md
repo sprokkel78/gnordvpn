@@ -1,4 +1,4 @@
-gnordvpn-sprokkel78
+![Screenshot](https://github.com/sprokkel78/gnordvpn/blob/develop/screenshots/title.png)
 
 A graphical user interface in PyGTK3 for using the nordvpn client binary on Ubuntu and other Linux distro's. 
 It requires Python3.10 and the PyGTK apps, it also relies on gnome-terminal for accepting
