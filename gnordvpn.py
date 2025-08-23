@@ -202,7 +202,7 @@ box99c.show()
 # CHECK IF GNORDVPN.PY IS ALREADY RUNNING
 print("Check if gNordVPN is already running. please wait.")
 
-status = subprocess.Popen("ps aux | grep \"python3 ./gnordvpn.py\" | grep -v \"grep\"",\
+status = subprocess.Popen("/usr/bin/ps aux | /usr/bin/grep \"python3 ./gnordvpn.py\" | /usr/bin/grep -v \"grep\"",\
                           shell=True, stdout=subprocess.PIPE,\
                           stderr=subprocess.PIPE, universal_newlines=True)
 rcstat = status.wait()
@@ -1151,7 +1151,7 @@ def Accept_File(obj):
 
         if internet == 1:
             status = subprocess.Popen(
-                "gnome-terminal --title 'gNordVPN' -- bash -c '/usr/bin/nordvpn fileshare accept " + file_id + "; sleep 5'",
+                "/usr/bin/gnome-terminal --title 'gNordVPN' -- /usr/bin/bash -c '/usr/bin/nordvpn fileshare accept " + file_id + "; /usr/bin/sleep 5'",
                 shell=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE, universal_newlines=True)
@@ -1451,7 +1451,7 @@ def Send_Host(obj):
 
         if internet == 1 and hostname != "" and ";" not in hostname:
             status = subprocess.Popen(
-                "gnome-terminal --title 'gNordVPN' -- bash -c '/usr/bin/nordvpn fileshare send " + hostname + " " + "\"" + selected_file + "\"" + " ; sleep 5'",
+                "/usr/bin/gnome-terminal --title 'gNordVPN' -- /usr/bin/bash -c '/usr/bin/nordvpn fileshare send " + hostname + " " + "\"" + selected_file + "\"" + " ; /usr/bin/sleep 5'",
                 shell=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE, universal_newlines=True)
@@ -1688,7 +1688,7 @@ def Button_Allow_Clear(obj):
 
 def Button_Help_Clicked(obj):
     status = subprocess.Popen(
-        "gnome-terminal -- bash -c 'man nordvpn'",
+        "/usr/bin/gnome-terminal -- /usr/bin/bash -c '/usr/bin/man nordvpn'",
         shell=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE, universal_newlines=True)
