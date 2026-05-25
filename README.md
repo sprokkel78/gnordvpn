@@ -38,3 +38,4 @@ Check https://www.github.com/sprokkel78/gnordvpn for contributing, development f
 
 Funding: Paypal email: sprokkel78.bart@gmail.com
 
+You must login to Nordvpn before you can use the app: in a terminal type: nordvpn login
