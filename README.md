@@ -4,7 +4,7 @@ A graphical user interface in PyGTK3 for using the nordvpn client binary on Ubun
 It requires Python3.10 and the PyGTK apps, it also relies on gnome-terminal for accepting
 and sending files. Developed on Fedora 42 and tested on Ubuntu 24.04. 
 
-Runs out of the box after default installation of Fedora or Ubuntu.
+Runs out of the box after default installation of Fedora or Ubuntu or Debian.
 
 ![Screenshot](https://github.com/sprokkel78/gnordvpn/blob/develop/screenshots/gnordvpn-5.png)
 
