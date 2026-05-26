@@ -41,3 +41,5 @@ Funding: Paypal email: sprokkel78.bart@gmail.com
 You must login to Nordvpn before you can use the app: in a terminal type: nordvpn login
 
 With iftop you can check your nord tunnel connection if you use OPENVPN: iftop -i nordtun -m 50M
+
+See nordvpn-gateway-scripts in my repo to create a vpn-gateway.
