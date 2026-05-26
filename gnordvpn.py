@@ -11,8 +11,8 @@ from threading import Thread
 from time import sleep
 
 
-# VERSION = 1.3.7
-ver = "1.3.7"
+# VERSION = 1.3.8
+ver = "1.3.8"
 
 
 # TODO
@@ -2492,7 +2492,7 @@ class MyApplication(Gtk.Application):
         liststore6a.append(['disable'])
         cell6a = Gtk.CellRendererText()
         global combobox6a
-        combobox6a.show()
+        combobox6a.hide()
         combobox6a.set_name("cbbox")
         combobox6a.set_size_request(140, -1)
         combobox6a.pack_start(cell6a, True)
